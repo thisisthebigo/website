@@ -1,6 +1,5 @@
 
 import './App.css';
-import {ComponentName} from "./ComponentName";
 import TechClubHero from "./Intro";
 import Announce from "./Announce";
 import logo from './assets/logo.jpg';
