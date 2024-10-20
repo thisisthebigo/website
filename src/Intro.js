@@ -82,7 +82,7 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
     };
 
     return (
-        <div style={styles.container}>
+        <div style={styles.container} id="intro">
             <div style={styles.backgroundPattern}></div>
             <div style={styles.gradientOverlay}></div>
             <div style={styles.content}>

@@ -84,27 +84,25 @@ const TechClubFooter = ({ clubName }) => {
                 <div style={styles.section}>
                     <h3 style={styles.heading}>Quick Links</h3>
                     <ul style={styles.list}>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>Home</a></li>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>About Us</a></li>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>Events</a></li>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>Projects</a></li>
+                        <li style={styles.listItem}><a href="#intro" style={styles.link}>Home</a></li>
+                        <li style={styles.listItem}><a href="#intro" style={styles.link}>About Us</a></li>
+                        <li style={styles.listItem}><a href="#events" style={styles.link}>Events</a></li>
                     </ul>
                 </div>
                 <div style={styles.section}>
                     <h3 style={styles.heading}>Connect</h3>
                     <ul style={styles.list}>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>Contact Us</a></li>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>Join the Club</a></li>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>Newsletter</a></li>
+                        <li style={styles.listItem}><a href="mailto:thisisthebigo@gmail.com" style={styles.link}>Contact Us</a></li>
+                        <li style={styles.listItem}><a href="mailto:thisisthebigo@gmail.com" style={styles.link}>Join the Club</a></li>
                     </ul>
                 </div>
                 <div style={styles.section}>
                     <h3 style={styles.heading}>Follow Us</h3>
                     <ul style={styles.list}>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>Twitter</a></li>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>LinkedIn</a></li>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>Instagram</a></li>
-                        <li style={styles.listItem}><a href="#" style={styles.link}>GitHub</a></li>
+                        <li style={styles.listItem}><a href="https://github.com/thisisthebigo" style={styles.link}>Twitter</a></li>
+                        <li style={styles.listItem}><a href="https://github.com/thisisthebigo" style={styles.link}>LinkedIn</a></li>
+                        <li style={styles.listItem}><a href="https://github.com/thisisthebigo" style={styles.link}>Instagram</a></li>
+                        <li style={styles.listItem}><a href="https://github.com/thisisthebigo" style={styles.link}>GitHub</a></li>
                     </ul>
                 </div>
             </div>
