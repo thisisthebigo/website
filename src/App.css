@@ -1,0 +1,336 @@
+/* Basic resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.intro-section {
+  height: 40rem;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0.5rem; /* Rounded corners */
+  position: relative; /* Positioning for the gradients */
+}
+
+.intro-section h1 {
+  font-size: 3rem; /* Default size */
+  color: white;
+  text-align: center;
+  z-index: 2; /* Bring text above other elements */
+}
+
+@media (min-width: 768px) {
+  .intro-section h1 {
+    font-size: 4rem; /* Medium size */
+  }
+}
+
+@media (min-width: 1024px) {
+  .intro-section h1 {
+    font-size: 5rem; /* Large size */
+  }
+}
+
+.gradient-container {
+  width: 40rem;
+  height: 40px;
+  position: relative;
+}
+
+.gradient-container::before,
+.gradient-container::after {
+  content: '';
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #4c51bf, transparent);
+  filter: blur(5px);
+}
+
+.gradient-container::after {
+  top: 5px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #4c51bf, transparent);
+}
+
+/* Sparkles */
+.sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  opacity: 0;
+  animation: sparkle 1.5s infinite;
+}
+
+/* Increased number of sparkles with decreased size */
+.sparkle:nth-child(1) {
+  width: 5px;
+  height: 5px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.sparkle:nth-child(2) {
+  width: 5px;
+  height: 5px;
+  top: 30%;
+  left: 50%;
+  animation-delay: 0.1s;
+}
+
+.sparkle:nth-child(3) {
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  left: 75%;
+  animation-delay: 0.2s;
+}
+
+.sparkle:nth-child(4) {
+  width: 4px;
+  height: 4px;
+  top: 70%;
+  left: 25%;
+  animation-delay: 0.3s;
+}
+
+.sparkle:nth-child(5) {
+  width: 5px;
+  height: 5px;
+  top: 10%;
+  left: 80%;
+  animation-delay: 0.4s;
+}
+
+.sparkle:nth-child(6) {
+  width: 5px;
+  height: 5px;
+  top: 15%;
+  left: 40%;
+  animation-delay: 0.5s;
+}
+
+.sparkle:nth-child(7) {
+  width: 4px;
+  height: 4px;
+  top: 45%;
+  left: 30%;
+  animation-delay: 0.6s;
+}
+
+.sparkle:nth-child(8) {
+  width: 5px;
+  height: 5px;
+  top: 65%;
+  left: 55%;
+  animation-delay: 0.7s;
+}
+
+.sparkle:nth-child(9) {
+  width: 6px;
+  height: 6px;
+  top: 80%;
+  left: 15%;
+  animation-delay: 0.8s;
+}
+
+.sparkle:nth-child(10) {
+  width: 4px;
+  height: 4px;
+  top: 25%;
+  left: 70%;
+  animation-delay: 0.9s;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5); /* Scale up */
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+footer {
+  background-color: #1b1f23; /* Dark GitHub-like color */
+  color: #fff;
+  padding: 30px 0;
+  position: relative;
+  text-align: left; /* Align text to the left */
+  overflow: hidden;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the start (top) */
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+  animation: fadeInUp 1s ease-in-out forwards; /* Added animation */
+}
+
+.footer-left {
+  opacity: 0; /* Start with hidden opacity */
+  animation: fadeInLeft 0.5s ease-in-out forwards; /* Slide in animation */
+}
+
+.footer-left h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #f0f6fc; /* Light color */
+}
+
+.footer-left p {
+  margin: 5px 0;
+}
+
+.footer-right {
+  text-align: left; /* Align text to the left */
+  opacity: 0; /* Start with hidden opacity */
+  animation: fadeInRight 0.5s ease-in-out forwards; /* Slide in animation */
+}
+
+.footer-right h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #f0f6fc;
+}
+
+.social-links {
+  list-style: none;
+  display: flex;
+  padding: 0;
+}
+
+.social-links li {
+  margin: 0 10px;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #f0f6fc;
+  font-size: 24px;
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
+  position: relative;
+}
+
+.social-links a:hover {
+  color: #58a6ff; /* Change color on hover */
+  transform: scale(1.5); /* Increase size on hover */
+}
+
+/* Optional background circle animation on hover */
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: #58a6ff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease; /* Include opacity transition */
+}
+
+.social-links a:hover::before {
+  width: 70px; /* Increase size for better effect */
+  height: 70px;
+  opacity: 0.2; /* Make it slightly visible */
+}
+
+/* Scroll-to-top button */
+#scrollToTopBtn {
+  background-color: #2a2a2a;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  bottom: 20px; /* Adjusted for less intrusiveness */
+  right: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  opacity: 0.7; /* Slightly transparent */
+}
+
+#scrollToTopBtn:hover {
+  transform: scale(1.1); /* Slightly scale up */
+  opacity: 1; /* Fully opaque */
+}
+
+/* Animation for fade-in */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for sliding from the left */
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation for sliding from the right */
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-left, .footer-right {
+    margin-bottom: 15px;
+  }
+}
+
+.logo-colorburn {
+  /* File: src/App.css */
+  mix-blend-mode: multiply;
+}
