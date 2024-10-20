@@ -2,11 +2,22 @@ import React, { useState, useRef, useEffect } from 'react';
 
 const IgniteEventAnnouncement = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef(null);
 
     useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
         const handleMouseMove = (event) => {
-            if (containerRef.current) {
+            if (containerRef.current && !isMobile) {
                 const { left, top } = containerRef.current.getBoundingClientRect();
                 setMousePosition({
                     x: event.clientX - left,
@@ -16,16 +27,16 @@ const IgniteEventAnnouncement = () => {
         };
 
         const container = containerRef.current;
-        if (container) {
+        if (container && !isMobile) {
             container.addEventListener('mousemove', handleMouseMove);
         }
 
         return () => {
-            if (container) {
+            if (container && !isMobile) {
                 container.removeEventListener('mousemove', handleMouseMove);
             }
         };
-    }, []);
+    }, [isMobile]);
 
     const styles = {
         container: {
@@ -106,36 +117,64 @@ const IgniteEventAnnouncement = () => {
             transition: 'opacity 0.3s ease',
             zIndex: 1,
         },
+        mobile: {
+            container: {
+                height: 'auto',
+                minHeight: '100vh',
+                padding: '2rem 1rem',
+            },
+            title: {
+                fontSize: '2.5rem',
+            },
+            description: {
+                fontSize: '1.2rem',
+            },
+        },
     };
 
     return (
         <div
             ref={containerRef}
-            style={styles.container}
+            style={{
+                ...styles.container,
+                ...(isMobile ? styles.mobile.container : {}),
+            }}
             onMouseEnter={() => {
-                const spotlight = containerRef.current.querySelector('.spotlight');
-                if (spotlight) spotlight.style.opacity = 1;
+                if (!isMobile) {
+                    const spotlight = containerRef.current.querySelector('.spotlight');
+                    if (spotlight) spotlight.style.opacity = 1;
+                }
             }}
             onMouseLeave={() => {
-                const spotlight = containerRef.current.querySelector('.spotlight');
-                if (spotlight) spotlight.style.opacity = 0;
+                if (!isMobile) {
+                    const spotlight = containerRef.current.querySelector('.spotlight');
+                    if (spotlight) spotlight.style.opacity = 0;
+                }
             }}
         >
             <div style={styles.backgroundPattern}></div>
             <div style={styles.gradientOverlay}></div>
-            <div
-                className="spotlight"
-                style={{
-                    ...styles.spotlight,
-                    '--x': `${mousePosition.x}px`,
-                    '--y': `${mousePosition.y}px`,
-                }}
-            ></div>
+            {!isMobile && (
+                <div
+                    className="spotlight"
+                    style={{
+                        ...styles.spotlight,
+                        '--x': `${mousePosition.x}px`,
+                        '--y': `${mousePosition.y}px`,
+                    }}
+                ></div>
+            )}
             <div style={styles.content}>
-                <h2 style={styles.title}>
+                <h2 style={{
+                    ...styles.title,
+                    ...(isMobile ? styles.mobile.title : {}),
+                }}>
                     Announcing <span style={styles.highlight}>Ignite</span>
                 </h2>
-                <p style={styles.description}>
+                <p style={{
+                    ...styles.description,
+                    ...(isMobile ? styles.mobile.description : {}),
+                }}>
                     Ready to spark your journey in tech?<br/>
                     Join us for an electrifying evening filled with mind-bending challenges, exciting opportunities, and a chance to showcase your talent! Whether you're a coding wizard or just starting out, there's something for everyone. Get ready to win amazing prizes, connect with like-minded peers, and be part of the next wave of innovators. This is your chance to ignite your passion for tech and become a member of TheBigO—where the future is built. 🌟
                 </p>

@@ -79,19 +79,67 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
             background: 'linear-gradient(45deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1))',
             zIndex: 1,
         },
+        '@media (max-width: 768px)': {
+            content: {
+                flexDirection: 'column',
+                textAlign: 'center',
+            },
+            textContent: {
+                flex: '1 1 auto',
+                paddingRight: 0,
+                marginBottom: '2rem',
+            },
+            clubName: {
+                fontSize: '3rem',
+            },
+            introduction: {
+                fontSize: '1.2rem',
+                maxWidth: '100%',
+            },
+            logoContainer: {
+                flex: '1 1 auto',
+            },
+            logo: {
+                maxWidth: '200px',
+                maxHeight: '200px',
+            },
+        },
     };
 
     return (
         <div style={styles.container} id="intro">
             <div style={styles.backgroundPattern}></div>
             <div style={styles.gradientOverlay}></div>
-            <div style={styles.content}>
-                <div style={styles.textContent}>
-                    <h1 style={styles.clubName}>{clubName}</h1>
-                    <p style={styles.introduction}>{introduction}</p>
+            <div style={{
+                ...styles.content,
+                ...(window.innerWidth <= 768 ? styles['@media (max-width: 768px)'].content : {})
+            }}>
+                <div style={{
+                    ...styles.textContent,
+                    ...(window.innerWidth <= 768 ? styles['@media (max-width: 768px)'].textContent : {})
+                }}>
+                    <h1 style={{
+                        ...styles.clubName,
+                        ...(window.innerWidth <= 768 ? styles['@media (max-width: 768px)'].clubName : {})
+                    }}>{clubName}</h1>
+                    <p style={{
+                        ...styles.introduction,
+                        ...(window.innerWidth <= 768 ? styles['@media (max-width: 768px)'].introduction : {})
+                    }}>{introduction}</p>
                 </div>
-                <div style={styles.logoContainer}>
-                    <img src={logoUrl} alt={`${clubName} logo`} style={styles.logo} className="logo-colorburn"/>
+                <div style={{
+                    ...styles.logoContainer,
+                    ...(window.innerWidth <= 768 ? styles['@media (max-width: 768px)'].logoContainer : {})
+                }}>
+                    <img
+                        src={logoUrl}
+                        alt={`${clubName} logo`}
+                        style={{
+                            ...styles.logo,
+                            ...(window.innerWidth <= 768 ? styles['@media (max-width: 768px)'].logo : {})
+                        }}
+                        className="logo-colorburn"
+                    />
                 </div>
             </div>
         </div>
