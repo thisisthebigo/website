@@ -99,9 +99,9 @@ const TechClubFooter = ({ clubName }) => {
                 <div style={styles.section}>
                     <h3 style={styles.heading}>Follow Us</h3>
                     <ul style={styles.list}>
-                        <li style={styles.listItem}><a href="https://github.com/thisisthebigo" style={styles.link}>Twitter</a></li>
-                        <li style={styles.listItem}><a href="https://github.com/thisisthebigo" style={styles.link}>LinkedIn</a></li>
-                        <li style={styles.listItem}><a href="https://github.com/thisisthebigo" style={styles.link}>Instagram</a></li>
+                        <li style={styles.listItem}><a href="https://x.com/codethebigo" style={styles.link}>Twitter</a></li>
+                        <li style={styles.listItem}><a href="https://www.linkedin.com/in/the-big-o/?_l=en_US" style={styles.link}>LinkedIn</a></li>
+                        <li style={styles.listItem}><a href="https://www.instagram.com/codebigo/" style={styles.link}>Instagram</a></li>
                         <li style={styles.listItem}><a href="https://github.com/thisisthebigo" style={styles.link}>GitHub</a></li>
                     </ul>
                 </div>
