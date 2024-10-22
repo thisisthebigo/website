@@ -176,7 +176,7 @@ const IgniteEventAnnouncement = () => {
                     ...(isMobile ? styles.mobile.description : {}),
                 }}>
                     Ready to spark your journey in tech?<br/>
-                    Join us for an electrifying evening filled with mind-bending challenges, exciting opportunities, and a chance to showcase your talent! Whether you're a coding wizard or just starting out, there's something for everyone. Get ready to win amazing prizes, connect with like-minded peers, and be part of the next wave of innovators. This is your chance to ignite your passion for tech and become a member of TheBigO—where the future is built. 🌟
+                    Join us for an electrifying evening filled with mind-bending challenges, exciting opportunities, and a chance to showcase your talent! Whether you're a coding wizard or just starting out, there's something for everyone. Get ready to win amazing prizes, connect with like-minded peers, and be part of the next wave of innovators. This is your chance to ignite your passion for tech and become a member of The Big O—where the future is built. 🌟
                 </p>
                 <a
                     href="#events"

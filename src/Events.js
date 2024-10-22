@@ -30,7 +30,7 @@ const EventCards = () => {
     const events = [
         {
             name: "BinaryBlitz - Code Fast, Win Big!",
-            description: "Think you’ve got what it takes to be the fastest coder? Test your skills in this rapid-fire quiz packed with coding challenges. Race against the clock, solve problems, and compete for the top spot—and of course, win exciting prizes!",
+            description: "Think you've got what it takes to be the fastest coder? Test your skills in this rapid-fire quiz packed with coding challenges. Race against the clock, solve problems, and compete for the top spot—and of course, win exciting prizes!",
         },
         {
             name: "DartCoding",
@@ -38,7 +38,7 @@ const EventCards = () => {
         },
         {
             name: "Gotham code crusade",
-            description: "Hack your way through Gotham's virtual labyrinth, solving puzzles and cracking codes to save the city before time runs out.",
+            description: "Hack your way through Gotham's virtual labyrinth, solving puzzles and cracking codes to save the city before time runs out. Facing a series of brain-bending puzzles and coding challenges testing your teamwork.",
         },
         {
             name: "CodeTales",
@@ -46,7 +46,7 @@ const EventCards = () => {
         },
         {
             name: "Secret Event - Unleash the Mystery!",
-            description: "Get ready for a thrilling, unexpected challenge that will push your tech skills to the edge! Details are hush-hush for now, but trust us—it’s going to be unforgettable. Surprises, excitement, and amazing prizes await those brave enough to face the unknown!",
+            description: "Get ready for a thrilling, unexpected challenge that will push your tech skills to the edge! Details are hush-hush for now, but trust us—it's going to be unforgettable. Surprises, excitement, and amazing prizes await those brave enough to face the unknown!",
         }
     ];
 
@@ -83,6 +83,7 @@ const EventCards = () => {
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '2rem',
+            marginBottom: '3rem',
         },
         card: {
             flex: '1 1 300px',
@@ -100,21 +101,39 @@ const EventCards = () => {
         },
         cardDescription: {
             fontSize: '1.1rem',
-            marginBottom: '1.5rem',
-            flexGrow: 1,
+        },
+        buttonContainer: {
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '2rem',
         },
         button: {
-            backgroundColor: '#60a5fa',
-            color: 'white',
-            fontWeight: 'bold',
-            padding: '0.75rem 1.5rem',
-            borderRadius: '9999px',
+            position: 'relative',
+            padding: '3px',
+            backgroundColor: 'transparent',
             border: 'none',
             cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            textDecoration: 'none',
+            borderRadius: '12px',
             display: 'inline-block',
-            textAlign: 'center',
+        },
+        buttonBackground: {
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to right, #6366f1, #a855f7)',
+            borderRadius: '12px',
+            opacity: 1,
+            transition: 'opacity 0.3s ease',
+        },
+        buttonInner: {
+            position: 'relative',
+            padding: '16px 48px',
+            backgroundColor: 'black',
+            color: 'white',
+            fontSize: '1.5rem',
+            fontWeight: 'bold',
+            borderRadius: '10px',
+            transition: 'background-color 0.3s ease',
+            textDecoration: 'none',
         },
         backgroundPattern: {
             position: 'absolute',
@@ -189,16 +208,25 @@ const EventCards = () => {
                         >
                             <h3 style={styles.cardTitle}>{event.name}</h3>
                             <p style={styles.cardDescription}>{event.description}</p>
-                            <a
-                                href="https://docs.google.com/forms/d/e/1FAIpQLSeDVIQ2pmL__lrE9K2hBlm5ospqInsC532sjahPdcN1cmCKkA/viewform"
-                                style={styles.button}
-                                onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
-                                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                            >
-                                Register Now
-                            </a>
                         </div>
                     ))}
+                </div>
+                <div style={styles.buttonContainer}>
+                    <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSeDVIQ2pmL__lrE9K2hBlm5ospqInsC532sjahPdcN1cmCKkA/viewform"
+                        style={{ ...styles.button, textDecoration: 'none' }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.querySelector('.button-inner').style.backgroundColor = 'transparent';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.querySelector('.button-inner').style.backgroundColor = 'black';
+                        }}
+                    >
+                        <div style={styles.buttonBackground}></div>
+                        <div className="button-inner" style={styles.buttonInner}>
+                            Register Now
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
