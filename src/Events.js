@@ -213,7 +213,7 @@ const EventCards = () => {
                 </div>
                 <div style={styles.buttonContainer}>
                     <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSeDVIQ2pmL__lrE9K2hBlm5ospqInsC532sjahPdcN1cmCKkA/viewform"
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfteSmmlB3VKZpPIY8AVrIhNd38FfTxuWpf7fA2TSQG5Wgifg/viewform"
                         style={{ ...styles.button, textDecoration: 'none' }}
                         onMouseEnter={(e) => {
                             e.currentTarget.querySelector('.button-inner').style.backgroundColor = 'transparent';
