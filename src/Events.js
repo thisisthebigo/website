@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-
+import {Link} from 'react-router-dom';
 const EventCards = () => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const containerRef = useRef(null);
@@ -31,22 +31,27 @@ const EventCards = () => {
         {
             name: "BinaryBlitz - Code Fast, Win Big!",
             description: "Think you've got what it takes to be the fastest coder? Test your skills in this rapid-fire quiz packed with coding challenges. Race against the clock, solve problems, and compete for the top spot—and of course, win exciting prizes!",
+            path: "/events/binary-blitz"
         },
         {
             name: "DartCoding",
             description: "In this head-to-head challenge, your dart throw sets the clock! The better your aim, the more time you get to solve the problem. Outscore your opponent by solving faster, where every second—and every dart—counts!",
+            path: "/events/dart-coding"
         },
         {
             name: "Gotham code crusade",
             description: "Hack your way through Gotham's virtual labyrinth, solving puzzles and cracking codes to save the city before time runs out. Facing a series of brain-bending puzzles and coding challenges testing your teamwork.",
+            path: "/events/gotham-code-crusade"
         },
         {
             name: "CodeTales",
             description: "Code Tales is where storytelling meets programming! Unleash your creativity as you transform a narrative into innovative code. Whether it's weaving algorithms into a plot or turning challenges into solutions, this event is your chance to bring stories to life through programming magic!",
+            path: "/events/code-tales"
         },
         {
             name: "Secret Event - Unleash the Mystery!",
             description: "Get ready for a thrilling, unexpected challenge that will push your tech skills to the edge! Details are hush-hush for now, but trust us—it's going to be unforgettable. Surprises, excitement, and amazing prizes await those brave enough to face the unknown!",
+            path: "/events/secret-event"
         }
     ];
 
@@ -101,13 +106,28 @@ const EventCards = () => {
         },
         cardDescription: {
             fontSize: '1.1rem',
+            marginBottom: '1.5rem',
+            flexGrow: 1,
+        },
+        cardButton: {
+            backgroundColor: '#60a5fa',
+            color: 'white',
+            fontWeight: 'bold',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '9999px',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            textDecoration: 'none',
+            display: 'inline-block',
+            textAlign: 'center',
         },
         buttonContainer: {
             display: 'flex',
             justifyContent: 'center',
             marginTop: '2rem',
         },
-        button: {
+        mainButton: {
             position: 'relative',
             padding: '3px',
             backgroundColor: 'transparent',
@@ -208,13 +228,21 @@ const EventCards = () => {
                         >
                             <h3 style={styles.cardTitle}>{event.name}</h3>
                             <p style={styles.cardDescription}>{event.description}</p>
+                            <Link
+                                to={event.path}
+                                style={styles.cardButton}
+                                onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                            >
+                                Explore More
+                            </Link>
                         </div>
                     ))}
                 </div>
                 <div style={styles.buttonContainer}>
                     <a
                         href="https://docs.google.com/forms/d/e/1FAIpQLSfteSmmlB3VKZpPIY8AVrIhNd38FfTxuWpf7fA2TSQG5Wgifg/viewform"
-                        style={{ ...styles.button, textDecoration: 'none' }}
+                        style={{ ...styles.mainButton, textDecoration: 'none' }}
                         onMouseEnter={(e) => {
                             e.currentTarget.querySelector('.button-inner').style.backgroundColor = 'transparent';
                         }}

@@ -169,7 +169,7 @@ const IgniteEventAnnouncement = () => {
                     ...styles.title,
                     ...(isMobile ? styles.mobile.title : {}),
                 }}>
-                    Announcing <span style={styles.highlight}>Ignite</span>
+                    Announcing  <span style={styles.highlight}>Ignite O(1)</span>
                 </h2>
                 <p style={{
                     ...styles.description,
