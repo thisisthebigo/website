@@ -11,8 +11,9 @@ import {
     Timer,
     UserCog,
     Crosshair,
-    Check
+    Check, Phone
 } from 'lucide-react';
+import {Link} from "react-router-dom";
 
 
 function useWindowSize() {
@@ -83,10 +84,10 @@ const DartCoding = () => {
             position: 'relative',
             zIndex: 10,
         },
-        header: {
-            textAlign: 'center',
-            marginBottom: '4rem',
-        },
+        // header: {
+        //     textAlign: 'center',
+        //     marginBottom: '4rem',
+        // },
         title: {
             fontSize: width <= 480 ? '2rem' : width <= 768 ? '2.5rem' : '4rem',
             fontWeight: 'bold',
@@ -196,6 +197,85 @@ const DartCoding = () => {
             backgroundClip: 'text',
             color: 'transparent',
         },
+        header: {
+            textAlign: 'center',
+            marginBottom: '2rem',
+        },
+        buttonContainer: {
+            display: 'flex',
+            gap: '1rem',
+            justifyContent: 'center',
+            marginBottom: '4rem',
+            flexWrap: 'wrap',
+        },
+        basicButton: {
+            backgroundColor: '#60a5fa',
+            color: 'white',
+            fontWeight: 'bold',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '9999px',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            textDecoration: 'none',
+            display: 'inline-block',
+            textAlign: 'center',
+            fontSize: width <= 768 ? '0.875rem' : '1rem',
+            '&:hover': {
+                backgroundColor: '#3b82f6',
+            },
+        },
+        gradientButton: {
+            position: 'relative',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '9999px',
+            border: 'none',
+            cursor: 'pointer',
+            color: 'white',
+            fontWeight: 'bold',
+            overflow: 'hidden',
+            textDecoration: 'none',
+            display: 'inline-block',
+            textAlign: 'center',
+            fontSize: width <= 768 ? '0.875rem' : '1rem',
+            background: 'linear-gradient(to right, #6366f1, #a855f7)',
+            transition: 'transform 0.3s ease',
+            '&:hover': {
+                transform: 'scale(1.05)',
+            },
+        },
+        contactCard: {
+            backgroundColor: 'rgba(17, 24, 39, 0.5)',
+            borderRadius: '1rem',
+            padding: '1.5rem',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid #1f2937',
+            marginBottom: '2rem',
+            maxWidth: width <= 768 ? '100%' : '400px',
+            margin: '0 auto 2rem auto',
+        },
+        contactHeader: {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            marginBottom: '1rem',
+        },
+        contactTitle: {
+            fontSize: width <= 768 ? '1.1rem' : '1.25rem',
+            fontWeight: 'bold',
+            background: 'linear-gradient(to right, #60a5fa, #a855f7)',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            color: 'transparent',
+        },
+        coordinatorInfo: {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            color: '#d1d5db',
+            marginBottom: '0.5rem',
+            fontSize: width <= 768 ? '0.9rem' : '1rem',
+        },
     };
 
     const InfoCard = ({ icon: Icon, title, children }) => (
@@ -231,6 +311,26 @@ const DartCoding = () => {
                     </p>
                 </div>
 
+                {/* Buttons */}
+                <div style={styles.buttonContainer}>
+                    <Link to={'/'}
+                          onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                          onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}>
+                        <button style={styles.basicButton}>
+                            Back to Home
+                        </button>
+                    </Link>
+                    <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfteSmmlB3VKZpPIY8AVrIhNd38FfTxuWpf7fA2TSQG5Wgifg/viewform"
+                        onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                        onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                    >
+                        <button style={styles.gradientButton}>
+                            Register Now
+                        </button>
+                    </a>
+                </div>
+
                 {/* Key Info Grid */}
                 <div style={styles.gridContainer}>
                     <InfoCard icon={MapPin} title="Venue">
@@ -253,19 +353,19 @@ const DartCoding = () => {
                     <InfoCard icon={Timer} title="Event Flow">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 First 10 minutes: Event introduction and rules explanation
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Two participants compete head-to-head
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Immediate evaluation and prize distribution
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 On-time registration available if time permits
                             </div>
                         </div>
@@ -273,15 +373,15 @@ const DartCoding = () => {
                     <InfoCard icon={Laptop} title="Requirements">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Personal laptop
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Internet connection
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Preferred compiler (AI assistance disabled)
                             </div>
                         </div>
@@ -293,19 +393,19 @@ const DartCoding = () => {
                     <InfoCard icon={Crosshair} title="Game Mechanics">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Throw darts to determine your coding time
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Solve problem statements within allocated time
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Three dart throws total for time extensions
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Final evaluation after last dart's time expires
                             </div>
                         </div>
@@ -313,19 +413,19 @@ const DartCoding = () => {
                     <InfoCard icon={UserCog} title="Evaluation Criteria">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Number of working solutions
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Output accuracy
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Code efficiency
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Code quality in case of no submissions
                             </div>
                         </div>
@@ -337,19 +437,19 @@ const DartCoding = () => {
                     <InfoCard icon={AlertCircle} title="Rules & Regulations">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 No AI or external assistance allowed
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Coding must stop when time expires
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 No participant interference allowed
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Original code only; plagiarism leads to disqualification
                             </div>
                         </div>
@@ -361,6 +461,22 @@ const DartCoding = () => {
                             </div>
                         </div>
                     </InfoCard>
+                </div>
+                <div style={styles.contactCard}>
+                    <div style={styles.contactHeader}>
+                        <div style={styles.iconContainer}>
+                            <Phone style={styles.icon}/>
+                        </div>
+                        <h3 style={styles.contactTitle}>Student Coordinators.<br/> Need Help, Whatsapp us!</h3>
+                    </div>
+                    <div style={styles.coordinatorInfo}>
+                        <Phone size={16} style={{color: '#60a5fa'}}/>
+                        <span>Abhishek: +91 63747 95699</span>
+                    </div>
+                    <div style={styles.coordinatorInfo}>
+                        <Phone size={16} style={{color: '#60a5fa'}}/>
+                        <span>Ojaswit: +91 85889 80555</span>
+                    </div>
                 </div>
             </div>
         </div>

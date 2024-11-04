@@ -11,8 +11,10 @@ import {
     Zap,
     Check,
     Award,
-    List
+    List,
+    Phone
 } from 'lucide-react';
+import {Link} from "react-router-dom";
 
 
 function useWindowSize() {
@@ -85,10 +87,10 @@ const BinaryBlitz = () => {
             position: 'relative',
             zIndex: 10,
         },
-        header: {
-            textAlign: 'center',
-            marginBottom: '4rem',
-        },
+        // header: {
+        //     textAlign: 'center',
+        //     marginBottom: '4rem',
+        // },
         title: {
             fontSize: width <= 480 ? '2rem' : width <= 768 ? '2.5rem' : '4rem',
             fontWeight: 'bold',
@@ -211,6 +213,85 @@ const BinaryBlitz = () => {
             color: 'transparent',
             fontSize: width <= 768 ? '1.5rem' : '2rem',
         },
+        header: {
+            textAlign: 'center',
+            marginBottom: '2rem',
+        },
+        buttonContainer: {
+            display: 'flex',
+            gap: '1rem',
+            justifyContent: 'center',
+            marginBottom: '4rem',
+            flexWrap: 'wrap',
+        },
+        basicButton: {
+            backgroundColor: '#60a5fa',
+            color: 'white',
+            fontWeight: 'bold',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '9999px',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            textDecoration: 'none',
+            display: 'inline-block',
+            textAlign: 'center',
+            fontSize: width <= 768 ? '0.875rem' : '1rem',
+            '&:hover': {
+                backgroundColor: '#3b82f6',
+            },
+        },
+        gradientButton: {
+            position: 'relative',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '9999px',
+            border: 'none',
+            cursor: 'pointer',
+            color: 'white',
+            fontWeight: 'bold',
+            overflow: 'hidden',
+            textDecoration: 'none',
+            display: 'inline-block',
+            textAlign: 'center',
+            fontSize: width <= 768 ? '0.875rem' : '1rem',
+            background: 'linear-gradient(to right, #6366f1, #a855f7)',
+            transition: 'transform 0.3s ease',
+            '&:hover': {
+                transform: 'scale(1.05)',
+            },
+        },
+        contactCard: {
+            backgroundColor: 'rgba(17, 24, 39, 0.5)',
+            borderRadius: '1rem',
+            padding: '1.5rem',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid #1f2937',
+            marginBottom: '2rem',
+            maxWidth: width <= 768 ? '100%' : '400px',
+            margin: '0 auto 2rem auto',
+        },
+        contactHeader: {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            marginBottom: '1rem',
+        },
+        contactTitle: {
+            fontSize: width <= 768 ? '1.1rem' : '1.25rem',
+            fontWeight: 'bold',
+            background: 'linear-gradient(to right, #60a5fa, #a855f7)',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            color: 'transparent',
+        },
+        coordinatorInfo: {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            color: '#d1d5db',
+            marginBottom: '0.5rem',
+            fontSize: width <= 768 ? '0.9rem' : '1rem',
+        },
     };
 
     const InfoCard = ({ icon: Icon, title, children }) => (
@@ -241,10 +322,31 @@ const BinaryBlitz = () => {
                 <div style={styles.header}>
                     <h1 style={styles.title}>BinaryBlitz</h1>
                     <p style={styles.subtitle}>
-                        Challenge your coding knowledge in this multi-round elimination quiz that tests your understanding
+                        Challenge your coding knowledge in this multi-round elimination quiz that tests your
+                        understanding
                         from basic syntax to complex problem-solving. Think fast, answer faster!
                     </p>
                 </div>
+
+                <div style={styles.buttonContainer}>
+                    <Link to={'/'}
+                          onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                          onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}>
+                        <button style={styles.basicButton}>
+                            Back to Home
+                        </button>
+                    </Link>
+                    <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfteSmmlB3VKZpPIY8AVrIhNd38FfTxuWpf7fA2TSQG5Wgifg/viewform"
+                        onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                        onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                        >
+                        <button style={styles.gradientButton}>
+                            Register Now
+                        </button>
+                    </a>
+                </div>
+
 
                 {/* Key Info Grid */}
                 <div style={styles.gridContainer}>
@@ -254,8 +356,8 @@ const BinaryBlitz = () => {
                     <InfoCard icon={Calendar} title="Date">
                         November 11, 2024
                     </InfoCard>
-                    <InfoCard icon={Target} title="Target Audience">
-                        College freshmen (beginners)
+                    <InfoCard icon={Target} title="Event Difficulty">
+                        Beginner Friendly
                     </InfoCard>
                     <InfoCard icon={Brain} title="Event Type">
                         Multi-round elimination quiz
@@ -268,15 +370,15 @@ const BinaryBlitz = () => {
                     <InfoCard icon={List} title="Multiple Choice & Fill-ins">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Single/Multiple correct answers (1 point)
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Complete code snippets (2 points)
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Best suitable answer type
                             </div>
                         </div>
@@ -284,15 +386,15 @@ const BinaryBlitz = () => {
                     <InfoCard icon={Layers} title="Code & Pattern">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Code arrangement tasks (3 points)
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Pattern matching (2 points)
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Output prediction (3 points)
                             </div>
                         </div>
@@ -305,15 +407,15 @@ const BinaryBlitz = () => {
                     <InfoCard icon={Timer} title="Round Progression">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Round 1: Basic syntax and fundamentals
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Middle Rounds: Data structures and algorithms
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Final Rounds: System design and complex problems
                             </div>
                         </div>
@@ -321,19 +423,20 @@ const BinaryBlitz = () => {
                     <InfoCard icon={Zap} title="Elimination Pattern">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Cumulative score-based elimination
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Progressive elimination percentage
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Speed-based tiebreakers
                             </div>
                         </div>
                     </InfoCard>
+
                 </div>
 
                 {/* Rules and Scoring */}
@@ -341,19 +444,19 @@ const BinaryBlitz = () => {
                     <InfoCard icon={AlertCircle} title="Rules & Guidelines">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Number of rounds varies by participant count
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Mixed question types in each round
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Negative marking only in final rounds
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Time limits strictly enforced
                             </div>
                         </div>
@@ -361,23 +464,40 @@ const BinaryBlitz = () => {
                     <InfoCard icon={Award} title="Scoring System">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 MCQ: 1 point
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Fill in the Blanks & Pattern Matching: 2 points
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 Code Arrangement & Output: 3 points
                             </div>
                             <div style={styles.listItem}>
-                                <Check style={styles.listItemIcon} />
+                                <Check style={styles.listItemIcon}/>
                                 True/False with Explanation: 2 points
                             </div>
                         </div>
                     </InfoCard>
+
+                </div>
+                <div style={styles.contactCard}>
+                    <div style={styles.contactHeader}>
+                        <div style={styles.iconContainer}>
+                            <Phone style={styles.icon}/>
+                        </div>
+                        <h3 style={styles.contactTitle}>Student Coordinators.<br/> Need Help, Whatsapp us!</h3>
+                    </div>
+                    <div style={styles.coordinatorInfo}>
+                        <Phone size={16} style={{color: '#60a5fa'}}/>
+                        <span>Sankalp: +91 91539 46929</span>
+                    </div>
+                    <div style={styles.coordinatorInfo}>
+                        <Phone size={16} style={{color: '#60a5fa'}}/>
+                        <span>Surabhi: +91 82990 39976</span>
+                    </div>
                 </div>
             </div>
         </div>

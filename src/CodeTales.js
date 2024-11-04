@@ -8,8 +8,9 @@ import {
     ArrowRight,
     Users,
     Sparkles,
-    ScrollText
+    ScrollText, Phone
 } from 'lucide-react';
+import {Link} from "react-router-dom";
 
 function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
@@ -79,10 +80,10 @@ const CodeTales = () => {
             position: 'relative',
             zIndex: 10,
         },
-        header: {
-            textAlign: 'center',
-            marginBottom: '4rem',
-        },
+        // header: {
+        //     textAlign: 'center',
+        //     marginBottom: '4rem',
+        // },
         title: {
             fontSize: width <= 480 ? '2rem' : width <= 768 ? '2.5rem' : '4rem',
             fontWeight: 'bold',
@@ -200,6 +201,85 @@ const CodeTales = () => {
             backgroundSize: '100px 100px',
             opacity: 0.3,
         },
+        header: {
+            textAlign: 'center',
+            marginBottom: '2rem',
+        },
+        buttonContainer: {
+            display: 'flex',
+            gap: '1rem',
+            justifyContent: 'center',
+            marginBottom: '4rem',
+            flexWrap: 'wrap',
+        },
+        basicButton: {
+            backgroundColor: '#60a5fa',
+            color: 'white',
+            fontWeight: 'bold',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '9999px',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            textDecoration: 'none',
+            display: 'inline-block',
+            textAlign: 'center',
+            fontSize: width <= 768 ? '0.875rem' : '1rem',
+            '&:hover': {
+                backgroundColor: '#3b82f6',
+            },
+        },
+        gradientButton: {
+            position: 'relative',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '9999px',
+            border: 'none',
+            cursor: 'pointer',
+            color: 'white',
+            fontWeight: 'bold',
+            overflow: 'hidden',
+            textDecoration: 'none',
+            display: 'inline-block',
+            textAlign: 'center',
+            fontSize: width <= 768 ? '0.875rem' : '1rem',
+            background: 'linear-gradient(to right, #6366f1, #a855f7)',
+            transition: 'transform 0.3s ease',
+            '&:hover': {
+                transform: 'scale(1.05)',
+            },
+        },
+        contactCard: {
+            backgroundColor: 'rgba(17, 24, 39, 0.5)',
+            borderRadius: '1rem',
+            padding: '1.5rem',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid #1f2937',
+            marginBottom: '2rem',
+            maxWidth: width <= 768 ? '100%' : '400px',
+            margin: '0 auto 2rem auto',
+        },
+        contactHeader: {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            marginBottom: '1rem',
+        },
+        contactTitle: {
+            fontSize: width <= 768 ? '1.1rem' : '1.25rem',
+            fontWeight: 'bold',
+            background: 'linear-gradient(to right, #60a5fa, #a855f7)',
+            WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
+            color: 'transparent',
+        },
+        coordinatorInfo: {
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            color: '#d1d5db',
+            marginBottom: '0.5rem',
+            fontSize: width <= 768 ? '0.9rem' : '1rem',
+        },
     };
 
     const InfoCard = ({ icon: Icon, title, children }) => (
@@ -245,6 +325,27 @@ if path == 'a':
                     </p>
                 </div>
 
+                {/* Buttons */}
+                <div style={styles.buttonContainer}>
+                    <Link to={'/'}
+                          onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                          onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}>
+                        <button style={styles.basicButton}>
+                            Back to Home
+                        </button>
+                    </Link>
+                    <a
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSfteSmmlB3VKZpPIY8AVrIhNd38FfTxuWpf7fA2TSQG5Wgifg/viewform"
+                        onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
+                        onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                    >
+                        <button style={styles.gradientButton}>
+                            Register Now
+                        </button>
+                    </a>
+                </div>
+
+
                 {/* Key Info Grid */}
                 <div style={styles.gridContainer}>
                     <InfoCard icon={MapPin} title="Venue">
@@ -266,19 +367,19 @@ if path == 'a':
                     <InfoCard icon={Sparkles} title="What Makes It Special">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Blend creative writing with basic programming concepts
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Create interactive stories where readers make choices
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Learn coding through storytelling
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Perfect for beginners - no prior coding experience required
                             </div>
                         </div>
@@ -290,7 +391,7 @@ if path == 'a':
                     <div style={styles.fullWidthCard}>
                         <div style={styles.infoCardHeader}>
                             <div style={styles.iconContainer}>
-                                <Code style={styles.icon} />
+                                <Code style={styles.icon}/>
                             </div>
                             <h3 style={styles.cardTitle}>Story Example</h3>
                         </div>
@@ -306,19 +407,19 @@ if path == 'a':
                     <InfoCard icon={ScrollText} title="Event Flow">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 15 minutes: Introduction and concept explanation
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 45 minutes: Story creation and coding
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Interactive demonstrations and sharing
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Evaluation and feedback
                             </div>
                         </div>
@@ -326,19 +427,19 @@ if path == 'a':
                     <InfoCard icon={Trophy} title="Evaluation Criteria">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Story creativity and engagement
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Effective use of programming concepts
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Interactive element implementation
                             </div>
                             <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon} />
+                                <ArrowRight style={styles.listItemIcon}/>
                                 Prompting Skills
                             </div>
                         </div>
@@ -354,6 +455,22 @@ if path == 'a':
                             </div>
                         </div>
                     </InfoCard>
+                </div>
+                <div style={styles.contactCard}>
+                    <div style={styles.contactHeader}>
+                        <div style={styles.iconContainer}>
+                            <Phone style={styles.icon}/>
+                        </div>
+                        <h3 style={styles.contactTitle}>Student Coordinators.<br/> Need Help, Whatsapp us!</h3>
+                    </div>
+                    <div style={styles.coordinatorInfo}>
+                        <Phone size={16} style={{color: '#60a5fa'}}/>
+                        <span>Anugrah: +91 95655 40240</span>
+                    </div>
+                    <div style={styles.coordinatorInfo}>
+                        <Phone size={16} style={{color: '#60a5fa'}}/>
+                        <span>Kavya: +91 63773 41417</span>
+                    </div>
                 </div>
             </div>
         </div>
