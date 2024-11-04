@@ -351,7 +351,7 @@ const BinaryBlitz = () => {
                 {/* Key Info Grid */}
                 <div style={styles.gridContainer}>
                     <InfoCard icon={MapPin} title="Venue">
-                        Civil/MBA Seminar Hall
+                        MBA Seminar Hall
                     </InfoCard>
                     <InfoCard icon={Calendar} title="Date">
                         November 11, 2024

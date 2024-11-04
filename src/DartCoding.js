@@ -337,10 +337,10 @@ const DartCoding = () => {
                         Open spot near Oya
                     </InfoCard>
                     <InfoCard icon={Calendar} title="Date">
-                        November 11, 2024
+                        November 11-12, 2024
                     </InfoCard>
                     <InfoCard icon={Clock} title="Duration">
-                        2-3 hours of intense coding
+                        5-6 hours of intense coding
                     </InfoCard>
                     <InfoCard icon={Target} title="Target Audience">
                         Open to all students (Freshmen encouraged)
@@ -366,23 +366,23 @@ const DartCoding = () => {
                             </div>
                             <div style={styles.listItem}>
                                 <ArrowRight style={styles.listItemIcon}/>
-                                On-time registration available if time permits
+                                Register on the spot or pre-register via Google Form if interested.
                             </div>
                         </div>
                     </InfoCard>
-                    <InfoCard icon={Laptop} title="Requirements">
+                    <InfoCard icon={Laptop} title="No Hardware Requirements">
                         <div style={styles.list}>
                             <div style={styles.listItem}>
                                 <Check style={styles.listItemIcon}/>
-                                Personal laptop
+                                We will provide laptop
                             </div>
                             <div style={styles.listItem}>
                                 <Check style={styles.listItemIcon}/>
-                                Internet connection
+                                Internet connection are provided for online compilers
                             </div>
                             <div style={styles.listItem}>
                                 <Check style={styles.listItemIcon}/>
-                                Preferred compiler (AI assistance disabled)
+                                Can write code in your preferred language
                             </div>
                         </div>
                     </InfoCard>
@@ -448,10 +448,10 @@ const DartCoding = () => {
                                 <ArrowRight style={styles.listItemIcon}/>
                                 No participant interference allowed
                             </div>
-                            <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon}/>
-                                Original code only; plagiarism leads to disqualification
-                            </div>
+                            {/*<div style={styles.listItem}>*/}
+                            {/*    <ArrowRight style={styles.listItemIcon}/>*/}
+                            {/*    Original code only; plagiarism leads to disqualification*/}
+                            {/*</div>*/}
                         </div>
                     </InfoCard>
                     <InfoCard icon={Trophy} title="Prizes">

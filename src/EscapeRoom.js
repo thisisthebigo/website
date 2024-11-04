@@ -444,10 +444,6 @@ const GothamCodeCrusade = () => {
                                 <span>🥈 Runner-Up</span>
                                 <span style={styles.prizeAmount}>To Be Declared</span>
                             </div>
-                            <div style={styles.prizeItem}>
-                                <span>🎨 Decorations Budget</span>
-                                <span style={styles.prizeAmount}>To Be Declared</span>
-                            </div>
                         </div>
                     </InfoCard>
                 </div>
