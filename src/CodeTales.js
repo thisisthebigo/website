@@ -414,10 +414,10 @@ if path == 'a':
                                 <ArrowRight style={styles.listItemIcon}/>
                                 45 minutes: Story creation and coding
                             </div>
-                            <div style={styles.listItem}>
-                                <ArrowRight style={styles.listItemIcon}/>
-                                Interactive demonstrations and sharing
-                            </div>
+                            {/*<div style={styles.listItem}>*/}
+                            {/*    <ArrowRight style={styles.listItemIcon}/>*/}
+                            {/*    Interactive demonstrations and sharing*/}
+                            {/*</div>*/}
                             <div style={styles.listItem}>
                                 <ArrowRight style={styles.listItemIcon}/>
                                 Evaluation and feedback
