@@ -1,18 +1,21 @@
 import React from 'react';
-import './App.css'
+import { Link } from 'react-router-dom';
 
 const TechClubHero = ({ clubName, introduction, logoUrl }) => {
     const styles = {
         container: {
-            backgroundColor: 'black',
+            backgroundColor: 'black', // Ensure the background is black
             color: 'white',
             minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '2rem',
+            padding: '2rem 4rem',
             position: 'relative',
             overflow: 'hidden',
+            '@media (max-width: 768px)': {
+                padding: '1.5rem',
+            },
         },
         content: {
             display: 'flex',
@@ -27,20 +30,26 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
             paddingRight: '2rem',
         },
         clubName: {
-            fontSize: '5rem',
+            fontSize: '4rem',
             fontWeight: 'bold',
             marginBottom: '1.5rem',
-            background: 'linear-gradient(to right, #60a5fa, #a78bfa)',
-            backgroundClip: 'text',
+            background: 'linear-gradient(to right, #60a5fa, #a855f7)',
             WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
             color: 'transparent',
-            textShadow: '0 0 20px rgba(96, 165, 250, 0.5)',
+            '@media (max-width: 768px)': {
+                fontSize: '2.5rem',
+            },
         },
         introduction: {
-            fontSize: '1.5rem',
+            fontSize: '1.25rem',
             lineHeight: '1.6',
             marginBottom: '2rem',
             maxWidth: '600px',
+            color: '#94a3b8',
+            '@media (max-width: 768px)': {
+                fontSize: '1rem',
+            },
         },
         logoContainer: {
             flex: '1 1 40%',
@@ -52,10 +61,12 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
             maxWidth: '300px',
             maxHeight: '300px',
             objectFit: 'contain',
-            filter: 'drop-shadow(0 0 20px rgba(96, 165, 250, 0.5))',
-            mixBlendMode: 'color-burn',
             borderRadius: '50%',
             border: '2px solid rgba(96, 165, 250, 0.5)',
+            '@media (max-width: 768px)': {
+                maxWidth: '200px',
+                maxHeight: '200px',
+            },
         },
         backgroundPattern: {
             position: 'absolute',
@@ -64,11 +75,11 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
             right: 0,
             bottom: 0,
             backgroundImage: `
-        radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%),
-        radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.2) 2%, transparent 0%)
-      `,
+                radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.05) 2%, transparent 0%),
+                radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.05) 2%, transparent 0%)
+            `,
             backgroundSize: '100px 100px',
-            opacity: 0.5,
+            opacity: 0.3,
         },
         gradientOverlay: {
             position: 'absolute',
@@ -76,8 +87,49 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(45deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1))',
+            background: 'linear-gradient(45deg, rgba(96, 165, 250, 0.05), rgba(168, 85, 247, 0.05))', // Reduced opacity for a subtle effect
             zIndex: 1,
+        },
+        buttonContainer: {
+            display: 'flex',
+            gap: '1rem',
+            marginTop: '2rem',
+        },
+        basicButton: {
+            backgroundColor: '#60a5fa',
+            color: 'white',
+            fontWeight: 'bold',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '9999px',
+            border: 'none',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            textDecoration: 'none',
+            display: 'inline-block',
+            textAlign: 'center',
+            fontSize: '1rem',
+            '&:hover': {
+                backgroundColor: '#3b82f6',
+            },
+        },
+        gradientButton: {
+            position: 'relative',
+            padding: '0.75rem 1.5rem',
+            borderRadius: '9999px',
+            border: 'none',
+            cursor: 'pointer',
+            color: 'white',
+            fontWeight: 'bold',
+            overflow: 'hidden',
+            textDecoration: 'none',
+            display: 'inline-block',
+            textAlign: 'center',
+            fontSize: '1rem',
+            background: 'linear-gradient(to right, #6366f1, #a855f7)',
+            transition: 'transform 0.3s ease',
+            '&:hover': {
+                transform: 'scale(1.05)',
+            },
         },
         '@media (max-width: 768px)': {
             content: {
@@ -89,19 +141,8 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
                 paddingRight: 0,
                 marginBottom: '2rem',
             },
-            clubName: {
-                fontSize: '3rem',
-            },
-            introduction: {
-                fontSize: '1.2rem',
-                maxWidth: '100%',
-            },
             logoContainer: {
                 flex: '1 1 auto',
-            },
-            logo: {
-                maxWidth: '200px',
-                maxHeight: '200px',
             },
         },
     };
@@ -126,6 +167,17 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
                         ...styles.introduction,
                         ...(window.innerWidth <= 768 ? styles['@media (max-width: 768px)'].introduction : {})
                     }}>{introduction}</p>
+                    <div style={styles.buttonContainer}>
+                        <Link to="/" style={styles.basicButton}>
+                            Back to Home
+                        </Link>
+                        <a
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSfteSmmlB3VKZpPIY8AVrIhNd38FfTxuWpf7fA2TSQG5Wgifg/viewform"
+                            style={styles.gradientButton}
+                        >
+                            Register Now
+                        </a>
+                    </div>
                 </div>
                 <div style={{
                     ...styles.logoContainer,
@@ -138,7 +190,6 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
                             ...styles.logo,
                             ...(window.innerWidth <= 768 ? styles['@media (max-width: 768px)'].logo : {})
                         }}
-                        className="logo-colorburn"
                     />
                 </div>
             </div>

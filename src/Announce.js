@@ -1,194 +1,206 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
+import { Users, Target, Lightbulb, BookOpen, Handshake } from 'lucide-react';
 
-const IgniteEventAnnouncement = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isMobile, setIsMobile] = useState(false);
-    const containerRef = useRef(null);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768);
-        };
-
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    useEffect(() => {
-        const handleMouseMove = (event) => {
-            if (containerRef.current && !isMobile) {
-                const { left, top } = containerRef.current.getBoundingClientRect();
-                setMousePosition({
-                    x: event.clientX - left,
-                    y: event.clientY - top,
-                });
-            }
-        };
-
-        const container = containerRef.current;
-        if (container && !isMobile) {
-            container.addEventListener('mousemove', handleMouseMove);
-        }
-
-        return () => {
-            if (container && !isMobile) {
-                container.removeEventListener('mousemove', handleMouseMove);
-            }
-        };
-    }, [isMobile]);
-
+const Announce = () => {
     const styles = {
         container: {
-            position: 'relative',
-            height: '40rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            minHeight: '100vh',
             backgroundColor: 'black',
             color: 'white',
+            position: 'relative',
             overflow: 'hidden',
+            padding: '2rem 4rem',
+            '@media (max-width: 768px)': {
+                padding: '1.5rem',
+            },
         },
         content: {
-            textAlign: 'center',
-            maxWidth: '64rem',
-            padding: '0 1rem',
-            zIndex: 2,
+            maxWidth: '1200px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 10,
         },
-        title: {
-            fontSize: '4rem',
+        section: {
+            marginBottom: '4rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1.5rem',
+        },
+        sectionTitle: {
+            fontSize: '2.5rem',
             fontWeight: 'bold',
-            marginBottom: '1.5rem',
-        },
-        highlight: {
-            background: 'linear-gradient(to right, #60a5fa, #a78bfa)',
-            backgroundClip: 'text',
+            background: 'linear-gradient(to right, #60a5fa, #a855f7)',
             WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
             color: 'transparent',
-            display: 'inline-block',
-            padding: '0 0.25rem',
+            marginBottom: '0.5rem',
+            textAlign: 'center',
+            '@media (max-width: 768px)': {
+                fontSize: '1.75rem',
+            },
         },
-        description: {
-            fontSize: '1.5rem',
-            marginBottom: '2rem',
+        sectionText: {
+            fontSize: '1.1rem',
+            color: '#d1d5db',
+            lineHeight: '1.7',
+            maxWidth: '800px',
+            margin: '0 auto',
+            '@media (max-width: 768px)': {
+                fontSize: '1rem',
+                textAlign: 'center',
+            },
         },
-        button: {
-            backgroundColor: '#60a5fa',
-            color: 'white',
-            fontWeight: 'bold',
-            padding: '0.75rem 1.5rem',
-            borderRadius: '9999px',
-            border: 'none',
-            cursor: 'pointer',
+        aboutSection: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '1.5rem',
+            maxWidth: '800px',
+            margin: '0 auto',
+        },
+        visionMissionGrid: {
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '3rem',
+            '@media (max-width: 768px)': {
+                gridTemplateColumns: '1fr',
+                gap: '2rem',
+            },
+        },
+        visionMissionText: {
+            fontSize: '1.1rem',
+            color: '#d1d5db',
+            lineHeight: '1.7',
+            '@media (max-width: 768px)': {
+                fontSize: '1rem',
+                textAlign: 'center',
+            },
+        },
+        coreValuesList: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: '1.5rem',
+            padding: 0,
+            '@media (max-width: 1024px)': {
+                gridTemplateColumns: '1fr',
+            },
+        },
+        coreValueItem: {
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '1rem',
+            backgroundColor: 'rgba(17, 24, 39, 0.5)',
+            borderRadius: '1rem',
+            padding: '1.5rem',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid #1f2937',
             transition: 'all 0.3s ease',
-            textDecoration: 'none',
-            display: 'inline-block',
-        },
-        backgroundPattern: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage: `
-        radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%),
-        radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.2) 2%, transparent 0%)
-      `,
-            backgroundSize: '100px 100px',
-            opacity: 0.5,
-        },
-        gradientOverlay: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(45deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1))',
-            zIndex: 1,
-        },
-        spotlight: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'radial-gradient(circle 400px at var(--x) var(--y), rgba(96, 165, 250, 0.15), transparent 80%)',
-            opacity: 0,
-            transition: 'opacity 0.3s ease',
-            zIndex: 1,
-        },
-        mobile: {
-            container: {
-                height: 'auto',
-                minHeight: '100vh',
-                padding: '2rem 1rem',
+            '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
             },
-            title: {
-                fontSize: '2.5rem',
-            },
-            description: {
-                fontSize: '1.2rem',
+        },
+        iconContainer: {
+            padding: '0.75rem',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderRadius: '0.75rem',
+            flexShrink: 0,
+        },
+        icon: {
+            width: '1.5rem',
+            height: '1.5rem',
+            color: '#60a5fa',
+        },
+        coreValueText: {
+            fontSize: '1rem',
+            color: '#d1d5db',
+            lineHeight: '1.6',
+            '@media (max-width: 768px)': {
+                fontSize: '0.9rem',
             },
         },
     };
 
     return (
-        <div
-            ref={containerRef}
-            style={{
-                ...styles.container,
-                ...(isMobile ? styles.mobile.container : {}),
-            }}
-            onMouseEnter={() => {
-                if (!isMobile) {
-                    const spotlight = containerRef.current.querySelector('.spotlight');
-                    if (spotlight) spotlight.style.opacity = 1;
-                }
-            }}
-            onMouseLeave={() => {
-                if (!isMobile) {
-                    const spotlight = containerRef.current.querySelector('.spotlight');
-                    if (spotlight) spotlight.style.opacity = 0;
-                }
-            }}
-        >
-            <div style={styles.backgroundPattern}></div>
-            <div style={styles.gradientOverlay}></div>
-            {!isMobile && (
-                <div
-                    className="spotlight"
-                    style={{
-                        ...styles.spotlight,
-                        '--x': `${mousePosition.x}px`,
-                        '--y': `${mousePosition.y}px`,
-                    }}
-                ></div>
-            )}
+        <div style={styles.container}>
             <div style={styles.content}>
-                <h2 style={{
-                    ...styles.title,
-                    ...(isMobile ? styles.mobile.title : {}),
-                }}>
-                    Announcing  <span style={styles.highlight}>Ignite O(1)</span>
-                </h2>
-                <p style={{
-                    ...styles.description,
-                    ...(isMobile ? styles.mobile.description : {}),
-                }}>
-                    Ready to spark your journey in tech?<br/>
-                    Join us for an electrifying evening filled with mind-bending challenges, exciting opportunities, and a chance to showcase your talent! Whether you're a coding wizard or just starting out, there's something for everyone. Get ready to win amazing prizes, connect with like-minded peers, and be part of the next wave of innovators. This is your chance to ignite your passion for tech and become a member of The Big O—where the future is built. 🌟
-                </p>
-                <a
-                    href="#events"
-                    style={styles.button}
-                    onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
-                    onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                >
-                    Explore Events
-                </a>
+                {/* Section 1: Brief Introduction */}
+                <section style={styles.section}>
+                    <div style={styles.aboutSection}>
+                        <h2 style={styles.sectionTitle}>About The Big O Club</h2>
+                        <p style={styles.sectionText}>
+                            The Big O Club is a vibrant, student-led initiative at our university, designed to bring together technology enthusiasts from diverse disciplines. Founded by a group of second-year students, the club was established to address the lack of networking opportunities and collaboration among tech-minded students. Our goal is to create an inclusive platform where students can exchange ideas, share expertise, and work on innovative projects that drive both personal and professional growth.
+                        </p>
+                    </div>
+                </section>
+
+                {/* Section 2: Vision & Mission */}
+                <section style={styles.section}>
+                    <div style={styles.visionMissionGrid}>
+                        <div>
+                            <h2 style={styles.sectionTitle}>Vision</h2>
+                            <p style={styles.visionMissionText}>
+                                To foster a collaborative and inclusive environment where students from all fields can unite, learn, and innovate together, pushing the boundaries of technology and personal development.
+                            </p>
+                        </div>
+                        <div>
+                            <h2 style={styles.sectionTitle}>Mission</h2>
+                            <p style={styles.visionMissionText}>
+                                The Big O Club is committed to creating a space where students from all disciplines can converge, collaborate, and challenge each other in their personal and professional growth. We aim to enhance teamwork, skill development, and a sense of community while encouraging exploration of emerging technologies.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Section 3: Core Values */}
+                <section style={styles.section}>
+                    <h2 style={styles.sectionTitle}>Core Values</h2>
+                    <ul style={styles.coreValuesList}>
+                        <li style={styles.coreValueItem}>
+                            <div style={styles.iconContainer}>
+                                <Users style={styles.icon} />
+                            </div>
+                            <p style={styles.coreValueText}>
+                                <strong>Inclusivity:</strong> We welcome all students, regardless of their technical background, and strive to cultivate a supportive and collaborative atmosphere.
+                            </p>
+                        </li>
+                        <li style={styles.coreValueItem}>
+                            <div style={styles.iconContainer}>
+                                <Target style={styles.icon} />
+                            </div>
+                            <p style={styles.coreValueText}>
+                                <strong>Diversity:</strong> We bring together individuals with expertise across different fields, promoting interdisciplinary learning and innovation.
+                            </p>
+                        </li>
+                        <li style={styles.coreValueItem}>
+                            <div style={styles.iconContainer}>
+                                <Lightbulb style={styles.icon} />
+                            </div>
+                            <p style={styles.coreValueText}>
+                                <strong>Skill Development:</strong> We encourage members to enhance their technical and soft skills through peer support, workshops, and friendly competition.
+                            </p>
+                        </li>
+                        <li style={styles.coreValueItem}>
+                            <div style={styles.iconContainer}>
+                                <BookOpen style={styles.icon} />
+                            </div>
+                            <p style={styles.coreValueText}>
+                                <strong>Innovation:</strong> We introduce students to emerging technologies and cutting-edge discoveries, sparking curiosity and enthusiasm for the ever-evolving tech landscape.
+                            </p>
+                        </li>
+                        <li style={styles.coreValueItem}>
+                            <div style={styles.iconContainer}>
+                                <Handshake style={styles.icon} />
+                            </div>
+                            <p style={styles.coreValueText}>
+                                <strong>Collaboration:</strong> We believe in the power of teamwork and actively promote joint projects, knowledge sharing, and creative problem-solving.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
             </div>
         </div>
     );
 };
 
-export default IgniteEventAnnouncement;
+export default Announce;
