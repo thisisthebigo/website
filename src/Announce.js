@@ -67,6 +67,22 @@ const Announce = () => {
                 gap: '2rem',
             },
         },
+        visionMissionBox: {
+            backgroundColor: 'rgba(17, 24, 39, 0.5)',
+            borderRadius: '1rem',
+            padding: '2rem',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid #1f2937',
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '1rem',
+            height: '100%',
+            '&:hover': {
+                transform: 'translateY(-4px)',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+            },
+        },
         visionMissionText: {
             fontSize: '1.1rem',
             color: '#d1d5db',
@@ -137,13 +153,13 @@ const Announce = () => {
                 {/* Section 2: Vision & Mission */}
                 <section style={styles.section}>
                     <div style={styles.visionMissionGrid}>
-                        <div>
+                        <div style={styles.visionMissionBox}>
                             <h2 style={styles.sectionTitle}>Vision</h2>
                             <p style={styles.visionMissionText}>
                                 To foster a collaborative and inclusive environment where students from all fields can unite, learn, and innovate together, pushing the boundaries of technology and personal development.
                             </p>
                         </div>
-                        <div>
+                        <div style={styles.visionMissionBox}>
                             <h2 style={styles.sectionTitle}>Mission</h2>
                             <p style={styles.visionMissionText}>
                                 The Big O Club is committed to creating a space where students from all disciplines can converge, collaborate, and challenge each other in their personal and professional growth. We aim to enhance teamwork, skill development, and a sense of community while encouraging exploration of emerging technologies.
