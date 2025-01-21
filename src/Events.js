@@ -1,264 +1,149 @@
-import React, { useState, useRef, useEffect } from 'react';
-import {Link} from 'react-router-dom';
-const EventCards = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const containerRef = useRef(null);
+import React from 'react';
+import { Calendar, Award, Zap } from 'lucide-react';
 
-    useEffect(() => {
-        const handleMouseMove = (event) => {
-            if (containerRef.current) {
-                const { left, top } = containerRef.current.getBoundingClientRect();
-                setMousePosition({
-                    x: event.clientX - left,
-                    y: event.clientY - top,
-                });
-            }
-        };
-
-        const container = containerRef.current;
-        if (container) {
-            container.addEventListener('mousemove', handleMouseMove);
-        }
-
-        return () => {
-            if (container) {
-                container.removeEventListener('mousemove', handleMouseMove);
-            }
-        };
-    }, []);
-
-    const events = [
-        {
-            name: "BinaryBlitz - Code Fast, Win Big!",
-            description: "Think you've got what it takes to be the fastest coder? Test your skills in this rapid-fire quiz packed with coding challenges. Race against the clock, solve problems, and compete for the top spot—and of course, win exciting prizes!",
-            path: "/events/binary-blitz"
-        },
-        {
-            name: "DartCoding",
-            description: "In this head-to-head challenge, your dart throw sets the clock! The better your aim, the more time you get to solve the problem. Outscore your opponent by solving faster, where every second—and every dart—counts!",
-            path: "/events/dart-coding"
-        },
-        {
-            name: "Gotham code crusade",
-            description: "Hack your way through Gotham's virtual labyrinth, solving puzzles and cracking codes to save the city before time runs out. Facing a series of brain-bending puzzles and coding challenges testing your teamwork.",
-            path: "/events/gotham-code-crusade"
-        },
-        {
-            name: "CodeTales",
-            description: "Code Tales is where storytelling meets programming! Unleash your creativity as you transform a narrative into innovative code. Whether it's weaving algorithms into a plot or turning challenges into solutions, this event is your chance to bring stories to life through programming magic!",
-            path: "/events/code-tales"
-        },
-        {
-            name: "Secret Event - Unleash the Mystery!",
-            description: "Get ready for a thrilling, unexpected challenge that will push your tech skills to the edge! Details are hush-hush for now, but trust us—it's going to be unforgettable. Surprises, excitement, and amazing prizes await those brave enough to face the unknown!",
-            path: "/events/secret-event"
-        }
-    ];
-
+const Events = () => {
     const styles = {
         container: {
-            position: 'relative',
-            minHeight: '100vh',
-            padding: '4rem 2rem',
+            padding: '40px 20px',
             backgroundColor: 'black',
-            color: 'white',
-            overflow: 'hidden',
-        },
-        content: {
-            position: 'relative',
-            zIndex: 2,
-            maxWidth: '1200px',
-            margin: '0 auto',
-        },
-        heading: {
-            fontSize: '4rem',
-            fontWeight: 'bold',
-            marginBottom: '3rem',
-            textAlign: 'center',
-        },
-        highlight: {
-            background: 'linear-gradient(to right, #60a5fa, #a78bfa)',
-            backgroundClip: 'text',
-            WebkitBackgroundClip: 'text',
-            color: 'transparent',
-            display: 'inline-block',
-        },
-        cardContainer: {
-            display: 'flex',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '2rem',
-            marginBottom: '3rem',
-        },
-        card: {
-            flex: '1 1 300px',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            borderRadius: '1rem',
-            padding: '2rem',
-            display: 'flex',
-            flexDirection: 'column',
-            transition: 'transform 0.3s ease',
-        },
-        cardTitle: {
-            fontSize: '2rem',
-            fontWeight: 'bold',
-            marginBottom: '1rem',
-        },
-        cardDescription: {
-            fontSize: '1.1rem',
-            marginBottom: '1.5rem',
-            flexGrow: 1,
-        },
-        cardButton: {
-            backgroundColor: '#60a5fa',
-            color: 'white',
-            fontWeight: 'bold',
-            padding: '0.75rem 1.5rem',
-            borderRadius: '9999px',
-            border: 'none',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            textDecoration: 'none',
-            display: 'inline-block',
-            textAlign: 'center',
-        },
-        buttonContainer: {
+            minHeight: '100vh',
             display: 'flex',
             justifyContent: 'center',
-            marginTop: '2rem',
+            alignItems: 'center'
         },
-        mainButton: {
+        content: {
+            width: '100%',
+            maxWidth: '1200px',
+            margin: '0 auto'
+        },
+        section: {
+            marginBottom: '40px'
+        },
+        sectionTitle: {
+            fontSize: '2.5rem',
+            fontWeight: 'bold',
+            background: 'linear-gradient(135deg, #60a5fa 0%, #a855f7 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textAlign: 'center',
+            marginBottom: '40px',
+            position: 'relative'
+        },
+        sectionText: {
+            color: '#94a3b8',
+            fontSize: '1.1rem',
+            textAlign: 'center'
+        },
+        cardsContainer: {
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 400px))',
+            gap: '30px',
+            justifyContent: 'center'
+        },
+        eventCard: {
+            backgroundColor: 'rgba(30, 41, 59, 0.8)',
+            borderRadius: '20px',
+            padding: '30px',
+            border: '1px solid rgba(148, 163, 184, 0.1)',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '20px',
             position: 'relative',
-            padding: '3px',
-            backgroundColor: 'transparent',
+            overflow: 'hidden'
+        },
+        cardGlow: {
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            right: '0',
+            height: '2px',
+            background: 'linear-gradient(90deg, #60a5fa, #a855f7)',
+            opacity: '0.7'
+        },
+        eventIconContainer: {
+            backgroundColor: 'rgba(59, 130, 246, 0.15)',
+            borderRadius: '12px',
+            padding: '15px',
+            width: 'fit-content',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: '10px'
+        },
+        eventIcon: {
+            width: '24px',
+            height: '24px',
+            color: '#60a5fa'
+        },
+        eventTitle: {
+            fontSize: '1.75rem',
+            fontWeight: 'bold',
+            color: '#fff',
+            marginBottom: '10px'
+        },
+        eventDescription: {
+            color: '#94a3b8',
+            lineHeight: '1.7',
+            fontSize: '1.1rem',
+            marginBottom: '20px'
+        },
+        button: {
+            backgroundColor: '#3b82f6',
+            color: 'white',
+            padding: '12px 24px',
+            borderRadius: '8px',
             border: 'none',
             cursor: 'pointer',
-            borderRadius: '12px',
-            display: 'inline-block',
-        },
-        buttonBackground: {
-            position: 'absolute',
-            inset: 0,
-            background: 'linear-gradient(to right, #6366f1, #a855f7)',
-            borderRadius: '12px',
-            opacity: 1,
-            transition: 'opacity 0.3s ease',
-        },
-        buttonInner: {
+            fontSize: '1rem',
+            fontWeight: '500',
+            transition: 'all 0.3s ease',
+            marginTop: 'auto',
+            textAlign: 'center',
             position: 'relative',
-            padding: '16px 48px',
-            backgroundColor: 'black',
-            color: 'white',
-            fontSize: '1.5rem',
-            fontWeight: 'bold',
-            borderRadius: '10px',
-            transition: 'background-color 0.3s ease',
-            textDecoration: 'none',
+            overflow: 'hidden'
         },
-        backgroundPattern: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage: `
-                radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%),
-                radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.2) 2%, transparent 0%)
-            `,
-            backgroundSize: '100px 100px',
-            opacity: 0.5,
-        },
-        gradientOverlay: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(45deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1))',
-            zIndex: 1,
-        },
-        spotlight: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'radial-gradient(circle 600px at var(--x) var(--y), rgba(96, 165, 250, 0.15), transparent 80%)',
-            opacity: 0,
-            transition: 'opacity 0.3s ease',
-            zIndex: 1,
-        },
+        buttonHover: {
+            ':hover': {
+                backgroundColor: '#2563eb',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)'
+            }
+        }
     };
 
     return (
-        <div
-            id="events"
-            ref={containerRef}
-            style={styles.container}
-            onMouseEnter={() => {
-                const spotlight = containerRef.current.querySelector('.spotlight');
-                if (spotlight) spotlight.style.opacity = 1;
-            }}
-            onMouseLeave={() => {
-                const spotlight = containerRef.current.querySelector('.spotlight');
-                if (spotlight) spotlight.style.opacity = 0;
-            }}
-        >
-            <div style={styles.backgroundPattern}></div>
-            <div style={styles.gradientOverlay}></div>
-            <div
-                className="spotlight"
-                style={{
-                    ...styles.spotlight,
-                    '--x': `${mousePosition.x}px`,
-                    '--y': `${mousePosition.y}px`,
-                }}
-            ></div>
+        <div style={styles.container}>
             <div style={styles.content}>
-                <h2 style={styles.heading}>
-                    <span style={styles.highlight}>Events</span>
-                </h2>
-                <div style={styles.cardContainer}>
-                    {events.map((event, index) => (
-                        <div
-                            key={index}
-                            style={styles.card}
-                            onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-10px)'}
-                            onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-                        >
-                            <h3 style={styles.cardTitle}>{event.name}</h3>
-                            <p style={styles.cardDescription}>{event.description}</p>
-                            <Link
-                                to={event.path}
-                                style={styles.cardButton}
-                                onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
-                                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
-                            >
+                {/* Upcoming Events Section */}
+                {/*<section style={styles.section}>*/}
+                {/*    <h2 style={styles.sectionTitle}>Upcoming Events</h2>*/}
+                {/*    <p style={styles.sectionText}>Coming Soon!</p>*/}
+                {/*</section>*/}
+
+                {/* Past Events Section */}
+                <section style={styles.section}>
+                    <h2 style={styles.sectionTitle}>Past Events</h2>
+                    <div style={styles.cardsContainer}>
+                        <div style={styles.eventCard}>
+                            <div style={styles.cardGlow} />
+                            <div style={styles.eventIconContainer}>
+                                <Zap style={styles.eventIcon} />
+                            </div>
+                            <h3 style={styles.eventTitle}>Ignite O(1)</h3>
+                            <p style={styles.eventDescription}>
+                                Ignite O(1) was a high-energy event filled with mind-bending challenges, exciting opportunities, and amazing prizes. It marked the launch of TheBigO and left participants inspired and thrilled to embark on their tech journeys.
+                            </p>
+                            <button style={{...styles.button, ...styles.buttonHover}}>
                                 Explore More
-                            </Link>
+                            </button>
                         </div>
-                    ))}
-                </div>
-                <div style={styles.buttonContainer}>
-                    <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSfteSmmlB3VKZpPIY8AVrIhNd38FfTxuWpf7fA2TSQG5Wgifg/viewform"
-                        style={{ ...styles.mainButton, textDecoration: 'none' }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.querySelector('.button-inner').style.backgroundColor = 'transparent';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.querySelector('.button-inner').style.backgroundColor = 'black';
-                        }}
-                    >
-                        <div style={styles.buttonBackground}></div>
-                        <div className="button-inner" style={styles.buttonInner}>
-                            Register Now
-                        </div>
-                    </a>
-                </div>
+                    </div>
+                </section>
             </div>
         </div>
     );
 };
 
-export default EventCards;
+export default Events;

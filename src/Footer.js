@@ -5,11 +5,12 @@ const TechClubFooter = ({ clubName }) => {
 
     const styles = {
         footer: {
-            backgroundColor: '#000',
+            backgroundColor: 'black', // Exactly matching Announce component
             color: 'white',
             padding: '4rem 2rem',
             position: 'relative',
             overflow: 'hidden',
+            borderTop: '1px solid #1f2937', // Added border to separate from Announce component
         },
         content: {
             display: 'flex',
@@ -23,12 +24,13 @@ const TechClubFooter = ({ clubName }) => {
         section: {
             flex: '1 1 200px',
             marginBottom: '2rem',
+            margin: '0.75rem',
         },
         heading: {
             fontSize: '1.5rem',
             fontWeight: 'bold',
             marginBottom: '1rem',
-            background: 'linear-gradient(to right, #60a5fa, #a78bfa)',
+            background: 'linear-gradient(to right, #60a5fa, #a855f7)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
             color: 'transparent',
@@ -42,44 +44,24 @@ const TechClubFooter = ({ clubName }) => {
             marginBottom: '0.5rem',
         },
         link: {
-            color: 'white',
+            color: '#d1d5db',
             textDecoration: 'none',
             transition: 'color 0.3s ease',
+            '&:hover': {
+                color: '#60a5fa',
+            },
         },
         copyright: {
             textAlign: 'center',
             marginTop: '2rem',
             paddingTop: '2rem',
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-        },
-        backgroundPattern: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage: `
-        radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.2) 2%, transparent 0%),
-        radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.2) 2%, transparent 0%)
-      `,
-            backgroundSize: '100px 100px',
-            opacity: 0.5,
-        },
-        gradientOverlay: {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(45deg, rgba(96, 165, 250, 0.1), rgba(167, 139, 250, 0.1))',
-            zIndex: 1,
+            borderTop: '1px solid #1f2937',
+            color: '#d1d5db',
         },
     };
 
     return (
         <footer style={styles.footer}>
-            <div style={styles.backgroundPattern}></div>
-            <div style={styles.gradientOverlay}></div>
             <div style={styles.content}>
                 <div style={styles.section}>
                     <h3 style={styles.heading}>Quick Links</h3>
