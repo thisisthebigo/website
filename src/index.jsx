@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import reportWebVitals from './reportWebVitals';
-import TechClubFooter from "./Footer";
-import EscapeRoom from "./EscapeRoom";
-import DartCoding from "./DartCoding";
-import CodeTales from "./CodeTales";
-import BinaryBlitz from "./BinaryBlitz";
-import ScrollToTop from "./ScrollToTop";
-import SecretEvent from "./Secret";
+// import reportWebVitals from './reportWebVitals';
+import TechClubFooter from "./components/Footer";
+import EscapeRoom from "./components/EscapeRoom";
+import DartCoding from "./components/DartCoding";
+import CodeTales from "./components/CodeTales";
+import BinaryBlitz from "./components/BinaryBlitz";
+import ScrollToTop from "./components/ScrollToTop";
+import SecretEvent from "./components/Secret";
 
 
 
@@ -36,4 +36,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
