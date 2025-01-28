@@ -18,7 +18,7 @@
   },
   "scripts": {
     "lint": "eslint src/",
-    "start": "vite",
+    "start": "vite --host",
     "build": "vite build",
     "serve": "vite preview"
   },
