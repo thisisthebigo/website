@@ -1,9 +1,9 @@
-
+import React from 'react';
 import './App.css';
-import TechClubHero from "./Intro";
-import Announce from "./Announce";
+import TechClubHero from "./components/Intro";
+import Announce from "./components/Announce";
 import logo from './assets/logo.jpg';
-import EventCards from "./Events";
+import EventCards from "./components/Events";
 
 function App() {
   return (

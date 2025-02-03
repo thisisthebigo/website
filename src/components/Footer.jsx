@@ -1,62 +1,88 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+const useWindowSize = () => {
+    const [windowSize, setWindowSize] = useState({
+        width: window.innerWidth,
+        height: window.innerHeight,
+    });
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowSize({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return windowSize;
+};
 
 const TechClubFooter = ({ clubName }) => {
+    const { width } = useWindowSize();
+    const isMobile = width < 768;
+
     const currentYear = new Date().getFullYear();
 
     const styles = {
         footer: {
-            backgroundColor: 'black', // Exactly matching Announce component
+            backgroundColor: 'black',
             color: 'white',
-            padding: '4rem 2rem',
-            position: 'relative',
-            overflow: 'hidden',
-            borderTop: '1px solid #1f2937', // Added border to separate from Announce component
+            padding: isMobile ? '1rem 0.5rem' : '2rem 2rem',
+            borderTop: '1px solid #1f2937',
         },
         content: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
+            display: 'grid',
+            gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : 'repeat(3, 1fr)',
+            gap: isMobile ? '0.8rem' : '2rem',
             maxWidth: '1200px',
             margin: '0 auto',
-            position: 'relative',
-            zIndex: 2,
+            padding: isMobile ? '0 1rem' : '0',
+            justifyItems: 'center', // Added this
         },
         section: {
-            flex: '1 1 200px',
-            marginBottom: '2rem',
-            margin: '0.75rem',
+            textAlign: 'center', // Always center-align
+            width: '100%', // Take full grid cell width
         },
         heading: {
-            fontSize: '1.5rem',
+            fontSize: isMobile ? '0.8rem' : '1.2rem',
             fontWeight: 'bold',
-            marginBottom: '1rem',
+            marginBottom: '0.5rem',
             background: 'linear-gradient(to right, #60a5fa, #a855f7)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
             color: 'transparent',
+            whiteSpace: 'nowrap',
+            textAlign: 'center',
         },
         list: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             listStyle: 'none',
             padding: 0,
             margin: 0,
         },
         listItem: {
-            marginBottom: '0.5rem',
+            marginBottom: '0.25rem',
+            lineHeight: '1.2',
         },
         link: {
             color: '#d1d5db',
             textDecoration: 'none',
-            transition: 'color 0.3s ease',
-            '&:hover': {
-                color: '#60a5fa',
-            },
+            fontSize: isMobile ? '0.7rem' : '0.9rem',
+            display: 'block',
+            whiteSpace: 'nowrap',
         },
         copyright: {
             textAlign: 'center',
-            marginTop: '2rem',
-            paddingTop: '2rem',
+            marginTop: '1rem',
+            paddingTop: '1rem',
             borderTop: '1px solid #1f2937',
             color: '#d1d5db',
+            fontSize: isMobile ? '0.65rem' : '0.8rem',
         },
     };
 
@@ -67,19 +93,21 @@ const TechClubFooter = ({ clubName }) => {
                     <h3 style={styles.heading}>Quick Links</h3>
                     <ul style={styles.list}>
                         <li style={styles.listItem}><a href="#intro" style={styles.link}>Home</a></li>
-                        <li style={styles.listItem}><a href="#intro" style={styles.link}>About Us</a></li>
+                        <li style={styles.listItem}><a href="#about" style={styles.link}>About</a></li>
                         <li style={styles.listItem}><a href="#events" style={styles.link}>Events</a></li>
                     </ul>
                 </div>
+                
                 <div style={styles.section}>
                     <h3 style={styles.heading}>Connect</h3>
                     <ul style={styles.list}>
-                        <li style={styles.listItem}><a href="mailto:thisisthebigo@gmail.com" style={styles.link}>Contact Us</a></li>
-                        <li style={styles.listItem}><a href="mailto:thisisthebigo@gmail.com" style={styles.link}>Join the Club</a></li>
+                        <li style={styles.listItem}><a href="mailto:thisisthebigo@gmail.com" style={styles.link}>Contact</a></li>
+                        <li style={styles.listItem}><a href="mailto:thisisthebigo@gmail.com" style={styles.link}>Join</a></li>
                     </ul>
                 </div>
+                
                 <div style={styles.section}>
-                    <h3 style={styles.heading}>Follow Us</h3>
+                    <h3 style={styles.heading}>Follow</h3>
                     <ul style={styles.list}>
                         <li style={styles.listItem}><a href="https://x.com/codethebigo" style={styles.link}>Twitter</a></li>
                         <li style={styles.listItem}><a href="https://www.linkedin.com/groups/10014219/" style={styles.link}>LinkedIn</a></li>
@@ -88,6 +116,7 @@ const TechClubFooter = ({ clubName }) => {
                     </ul>
                 </div>
             </div>
+            
             <div style={styles.copyright}>
                 © {currentYear} {clubName}. All rights reserved.
             </div>
