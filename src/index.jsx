@@ -5,12 +5,13 @@ import App from './App';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 // import reportWebVitals from './reportWebVitals';
 import TechClubFooter from "./components/Footer";
-import EscapeRoom from "./components/EscapeRoom";
-import DartCoding from "./components/DartCoding";
-import CodeTales from "./components/CodeTales";
-import BinaryBlitz from "./components/BinaryBlitz";
+import EscapeRoom from "./pages/pastEventPages/EscapeRoom";
+import DartCoding from "./pages/pastEventPages/DartCoding";
+import CodeTales from "./pages/pastEventPages/CodeTales";
+import BinaryBlitz from "./pages/pastEventPages/BinaryBlitz";
 import ScrollToTop from "./components/ScrollToTop";
-import SecretEvent from "./components/Secret";
+import SecretEvent from "./pages/pastEventPages/Secret";
+import PastEvents from './pages/PastEvents';
 
 
 
@@ -22,11 +23,12 @@ root.render(
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="*" element={<App />} />
-                <Route path="/events/gotham-code-crusade" element={<EscapeRoom />} />
-                <Route path="/events/dart-coding" element={<DartCoding />} />
-                <Route path="/events/code-tales" element={<CodeTales />} />
-                <Route path="/events/binary-blitz" element={<BinaryBlitz />} />
-                <Route path="/events/secret-event" element={<SecretEvent />} />
+                <Route path="/past-events" element={<PastEvents />} />
+                <Route path="/past-events/escape-room" element={<EscapeRoom />} />
+                <Route path="/past-events/dart-coding" element={<DartCoding />} />
+                <Route path="/past-events/code-tales" element={<CodeTales />} />
+                <Route path="/past-events/binary-blitz" element={<BinaryBlitz />} />
+                <Route path="/past-events/secret-event" element={<SecretEvent />} />
             </Routes>
             <TechClubFooter clubName={"The Big O"} />
         </Router>

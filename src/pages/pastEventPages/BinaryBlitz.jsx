@@ -504,4 +504,5 @@ const BinaryBlitz = () => {
     );
 };
 
+
 export default BinaryBlitz;
