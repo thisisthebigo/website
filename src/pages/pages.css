@@ -1,0 +1,106 @@
+/* Container styles */
+.container {
+  min-height: 100vh;
+  background-color: black;
+  color: white;
+  padding: 2rem 4rem;
+}
+
+/* Header styles */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Grid layout for event cards */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Event card styles */
+.event-card {
+  background-color: rgba(17, 24, 39, 0.5);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #1f2937;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.event-card:hover {
+  transform: scale(1.03);
+}
+
+/* Image styles */
+.event-image {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Title with gradient text */
+.event-title {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+  background: linear-gradient(to right, #60a5fa, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Date styling */
+.event-date {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+/* Description and venue styles */
+.event-description {
+  margin: 0.5rem 0;
+  color: #d1d5db;
+}
+
+.venue {
+  color: #60a5fa;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Details Link styled as a button */
+.details-link {
+  display: inline-block;
+  background: linear-gradient(to right, #6366f1, #a855f7);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+
+.details-link:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  
+  .grid-container {
+    gap: 1rem;
+  }
+  
+  .event-title {
+    font-size: 1.5rem;
+  }
+  
+  .event-date {
+    font-size: 1rem;
+  }
+}
