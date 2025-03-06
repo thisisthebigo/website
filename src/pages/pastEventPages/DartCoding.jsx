@@ -337,7 +337,7 @@ const DartCoding = () => {
                         Open spot near Oya
                     </InfoCard>
                     <InfoCard icon={Calendar} title="Date">
-                        November 11-12, 2024
+                        November 11, 2024
                     </InfoCard>
                     <InfoCard icon={Clock} title="Duration">
                         5-6 hours of intense coding

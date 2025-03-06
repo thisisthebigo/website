@@ -151,7 +151,7 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
         <div style={styles.textContent}>
           <h1 style={styles.clubName}>{clubName}</h1>
           <p style={styles.introduction}>{introduction}</p>
-          <div style={styles.buttonContainer}>
+          {/* <div style={styles.buttonContainer}>
             <Link to="/" style={styles.basicButton}>
               Back to Home
             </Link>
@@ -161,7 +161,7 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
             >
               Register Now
             </a>
-          </div>
+          </div> */}
         </div>
         <div style={styles.logoContainer}>
           <img

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Calendar, Award, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Events = () => {
     const styles = {
@@ -135,9 +136,9 @@ const Events = () => {
                             <p style={styles.eventDescription}>
                                 Ignite O(1) was a high-energy event filled with mind-bending challenges, exciting opportunities, and amazing prizes. It marked the launch of TheBigO and left participants inspired and thrilled to embark on their tech journeys.
                             </p>
-                            <button style={{...styles.button, ...styles.buttonHover}}>
+                            <Link to="/past-events" style={{...styles.button, ...styles.buttonHover, textDecoration: 'none'}}>
                                 Explore More
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </section>

@@ -3,7 +3,7 @@ import './App.css';
 import TechClubHero from "./components/Intro";
 import Announce from "./components/Announce";
 import logo from './assets/logo.jpg';
-import EventCards from "./components/Events";
+import Events from "./components/Events";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
             logoUrl={logo} />
       <Announce />
 
-        <EventCards />
+        <Events />
     </>
   );
 }
