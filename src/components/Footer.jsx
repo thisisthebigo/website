@@ -102,7 +102,7 @@ const TechClubFooter = ({ clubName }) => {
                     <h3 style={styles.heading}>Connect</h3>
                     <ul style={styles.list}>
                         <li style={styles.listItem}><a href="mailto:thisisthebigo@gmail.com" style={styles.link}>Contact</a></li>
-                        <li style={styles.listItem}><a href="mailto:thisisthebigo@gmail.com" style={styles.link}>Join</a></li>
+                        <li style={styles.listItem}><a href="https://docs.google.com/forms/d/e/1FAIpQLScUE0cuZgpk60vhU4e2B76zU-sljhd-gaR0kwNN_6NKLfpcoA/viewform?usp=sf_link" style={styles.link}>Join</a></li>
                     </ul>
                 </div>
                 
