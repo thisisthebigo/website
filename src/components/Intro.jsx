@@ -151,17 +151,17 @@ const TechClubHero = ({ clubName, introduction, logoUrl }) => {
         <div style={styles.textContent}>
           <h1 style={styles.clubName}>{clubName}</h1>
           <p style={styles.introduction}>{introduction}</p>
-          {/* <div style={styles.buttonContainer}>
-            <Link to="/" style={styles.basicButton}>
+           <div style={styles.buttonContainer}>
+            {/* <Link to="/" style={styles.basicButton}>
               Back to Home
-            </Link>
+            </Link> */}
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfteSmmlB3VKZpPIY8AVrIhNd38FfTxuWpf7fA2TSQG5Wgifg/viewform"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScUE0cuZgpk60vhU4e2B76zU-sljhd-gaR0kwNN_6NKLfpcoA/viewform?usp=sf_link"
               style={styles.gradientButton}
             >
               Register Now
             </a>
-          </div> */}
+          </div>
         </div>
         <div style={styles.logoContainer}>
           <img
