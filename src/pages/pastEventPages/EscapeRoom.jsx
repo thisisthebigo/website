@@ -367,7 +367,7 @@ const GothamCodeCrusade = () => {
                             Back to Home
                         </button>
                     </Link>
-                    <a
+                    {/* <a
                         href="https://docs.google.com/forms/d/e/1FAIpQLSfteSmmlB3VKZpPIY8AVrIhNd38FfTxuWpf7fA2TSQG5Wgifg/viewform"
                         onMouseEnter={(e) => e.target.style.transform = 'scale(1.05)'}
                         onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
@@ -375,7 +375,7 @@ const GothamCodeCrusade = () => {
                         <button style={styles.gradientButton}>
                             Register Now
                         </button>
-                    </a>
+                    </a> */}
                 </div>
 
                 {/* Key Info Grid */}
