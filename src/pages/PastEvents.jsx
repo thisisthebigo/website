@@ -56,7 +56,7 @@ const pastEvents = [
 
 const PastEvents = () => {
   return (
-    <div className="min-h-screen bg-black text-white px-8 py-12 md:px-16 md:py-12">
+    <div className="min-h-screen bg-black text-white px-8 py-12 md:px-16 md:py-12" id = "past">
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold">Past Events</h1>
         <p className="mt-4 text-lg text-gray-400">
