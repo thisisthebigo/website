@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+// import App from './App'; // App is replaced by Home
+import Home from './pages/Home';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 // import reportWebVitals from './reportWebVitals';
 import TechClubFooter from "./components/Footer";
@@ -21,16 +22,15 @@ root.render(
         <Router>
             <ScrollToTop />
             <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="*" element={<App />} />
-                <Route path="/past-events" element={<PastEvents />} />
-                <Route path="/past-events/escape-room" element={<EscapeRoom />} />
-                <Route path="/past-events/dart-coding" element={<DartCoding />} />
-                <Route path="/past-events/code-tales" element={<CodeTales />} />
-                <Route path="/past-events/binary-blitz" element={<BinaryBlitz />} />
-                <Route path="/past-events/secret-event" element={<SecretEvent />} />
+                <Route path="/" element={<Home />} />
+                <Route path="*" element={<Home />} />
+                <Route path="/past-events" element={<><PastEvents /><TechClubFooter clubName={"The Big O"} /></>} />
+                <Route path="/past-events/escape-room" element={<><EscapeRoom /><TechClubFooter clubName={"The Big O"} /></>} />
+                <Route path="/past-events/dart-coding" element={<><DartCoding /><TechClubFooter clubName={"The Big O"} /></>} />
+                <Route path="/past-events/code-tales" element={<><CodeTales /><TechClubFooter clubName={"The Big O"} /></>} />
+                <Route path="/past-events/binary-blitz" element={<><BinaryBlitz /><TechClubFooter clubName={"The Big O"} /></>} />
+                <Route path="/past-events/secret-event" element={<><SecretEvent /><TechClubFooter clubName={"The Big O"} /></>} />
             </Routes>
-            <TechClubFooter clubName={"The Big O"} />
         </Router>
     </React.StrictMode>
 );

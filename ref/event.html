@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Big O | Execution Logs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,FILL@0..1,GRAD@0,opsz@24&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --obsidian: #050505;
+            --emerald-matrix: #10b981;
+            --emerald-glow: rgba(16, 185, 129, 0.4);
+            --matrix-grid: rgba(16, 185, 129, 0.08);
+        }
+        @layer base {
+            body {
+                background-color: var(--obsidian);
+                color: #e2e8f0;
+            }
+        }
+        .cyber-grid {
+            background-image: 
+                linear-gradient(to right, var(--matrix-grid) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--matrix-grid) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .matrix-glow-text {
+            text-shadow: 0 0 12px var(--emerald-glow);
+        }
+        .scan-line {
+            position: relative;
+            overflow: hidden;
+        }
+        .scan-line::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--emerald-matrix);
+            opacity: 0.6;
+            box-shadow: 0 0 15px var(--emerald-matrix);
+            animation: scanning 4s linear infinite;
+        }
+        @keyframes scanning {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        .bento-card {
+            background: #000000;
+            border: 1px solid #1a1a1a;
+            position: relative;
+        }
+        .bento-card::before, .bento-card::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-color: var(--emerald-matrix);
+            z-index: 10;
+        }
+        .bento-card::before {
+            top: -1px;
+            left: -1px;
+            border-top: 2px solid var(--emerald-matrix);
+            border-left: 2px solid var(--emerald-matrix);
+        }
+        .bento-card::after {
+            bottom: -1px;
+            right: -1px;
+            border-bottom: 2px solid var(--emerald-matrix);
+            border-right: 2px solid var(--emerald-matrix);
+        }
+        .glitch-overlay {
+            position: relative;
+        }
+        .glitch-overlay::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(16, 185, 129, 0.08) 3px);
+            pointer-events: none;
+            z-index: 5;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-['Space_Grotesk'] antialiased overflow-x-hidden">
+<nav class="fixed top-0 w-full z-50 border-b border-emerald-900/30 bg-black/90 backdrop-blur-xl">
+<div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-2">
+<span class="text-[var(--emerald-matrix)] font-bold text-xl tracking-tighter font-mono">O[1]</span>
+</div>
+<div class="hidden lg:flex items-center space-x-4 border-l border-emerald-900/50 pl-6">
+<div class="flex flex-col">
+<span class="text-[8px] font-mono text-emerald-500/60 uppercase leading-none">Kernel_Status</span>
+<span class="text-[10px] font-mono text-emerald-400">0x8004_STABLE</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[8px] font-mono text-emerald-500/60 uppercase leading-none">Net_Traffic</span>
+<span class="text-[10px] font-mono text-emerald-400">1.2GB/s</span>
+</div>
+</div>
+</div>
+<div class="hidden md:flex space-x-8 font-mono text-[11px] uppercase tracking-[0.2em] text-emerald-500/70">
+<a class="hover:text-[var(--emerald-matrix)] transition-colors" href="#">_Home</a>
+<a class="hover:text-[var(--emerald-matrix)] transition-colors" href="#">_Archive</a>
+<a class="hover:text-[var(--emerald-matrix)] transition-colors" href="#">_Modules</a>
+<a class="text-[var(--emerald-matrix)]" href="#">_Execution_Logs</a>
+</div>
+<div class="flex items-center space-x-4">
+<a class="bg-[var(--emerald-matrix)] hover:bg-emerald-400 text-black px-4 py-1.5 text-xs font-bold font-mono tracking-tighter flex items-center gap-2" href="#">
+<span>INIT_SEQUENCE</span>
+<span class="material-symbols-outlined text-sm">terminal</span>
+</a>
+</div>
+</div>
+</nav>
+<header class="relative pt-32 pb-20 border-b border-emerald-900/20 overflow-hidden">
+<div class="absolute inset-0 cyber-grid opacity-30"></div>
+<div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+<div class="inline-flex items-center gap-3 px-4 py-1.5 mb-8 border border-emerald-500/20 bg-emerald-500/5 font-mono text-[10px] text-[var(--emerald-matrix)] uppercase tracking-[0.3em]">
+<span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+            Datastream Active // Vault_01
+        </div>
+<h1 class="text-4xl md:text-7xl font-bold mb-4 tracking-tighter font-mono uppercase">
+            ARCHIVE_DATA // <span class="text-[var(--emerald-matrix)] matrix-glow-text">EXECUTION_LOGS</span>
+</h1>
+<p class="text-emerald-100/40 font-mono text-xs uppercase tracking-[0.4em] max-w-2xl mx-auto">
+            Exploring historical event sequences and system evolutions.
+        </p>
+</div>
+</header>
+<main class="py-24 relative min-h-screen">
+<div class="absolute inset-0 cyber-grid opacity-10 pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="flex items-center justify-between mb-16 border-b border-emerald-900/30 pb-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-emerald-500">folder_open</span>
+<span class="font-mono text-xs text-emerald-500/70 uppercase tracking-widest">Listing 0x05 Entries</span>
+</div>
+<div class="hidden md:flex flex-col items-end gap-1 font-mono text-[9px] text-emerald-500/40">
+<span>SYS_STATUS::HEALTHY</span>
+<span>DATA_INTEGRITY::VERIFIED</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<div class="bento-card p-6 flex flex-col group">
+<div class="glitch-overlay mb-6 border border-emerald-900/30 overflow-hidden aspect-[16/10]">
+<img alt="BinaryBlitz" class="w-full h-full object-cover opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqUSTWHD7SyhrUXSjl2LFApZROsxre0FJDd1fl9QAswmdwi3TCBBdHc8TLyu6IZTiMCyGLzboCMP9kNOIB3nMnbJhQ5bip2j-TaqzvLG0A_535n3AiFU-ZYZI-obJo50kqHO1iJevpd7KhV7F8Z5tm5afyI10QSiNI8AzupVj6hRShq4bTzD5G4BzKZdsOnpSFVmXeP91R4E3MVwvJOdyHWFVLo7BbgnDz_KS1XY3e6XxRVeP-wi986dF09bRA5JX2bgEAzAS63tDh"/>
+<div class="absolute inset-0 bg-emerald-900/10 pointer-events-none"></div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-xl font-mono font-bold text-[var(--emerald-matrix)] group-hover:matrix-glow-text transition-all uppercase">BinaryBlitz</h4>
+<span class="font-mono text-[9px] text-emerald-500/50 border border-emerald-900/50 px-2 py-0.5">[DATE::2024.Q4]</span>
+</div>
+<p class="text-emerald-100/40 text-[13px] leading-relaxed mb-8 flex-grow">
+                    An exciting quiz event featuring coding challenges and rapid-fire rounds. Nodes synchronized for high-speed algorithmic resolution.
+                </p>
+<button class="w-full bg-[var(--emerald-matrix)] text-black py-3.5 font-mono text-[10px] font-bold tracking-[0.2em] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all uppercase flex items-center justify-center gap-2">
+                    ACCESS_LOG_0x01
+                    <span class="material-symbols-outlined text-sm">login</span>
+</button>
+</div>
+<div class="bento-card p-6 flex flex-col group">
+<div class="glitch-overlay mb-6 border border-emerald-900/30 overflow-hidden aspect-[16/10]">
+<img alt="Dart Coding" class="w-full h-full object-cover opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhVC9kpHXqz7ahEOOmpthD1qm0hJKpgLR-VhkQ9KR6LEP6z7OjokCLqg7dBYigIHiMdIYYuY2wZGTccXAgmq36M6B4kfnMATn_lZTOKMa-hrIUU48VGW75quTjZ_86znUvffO1AFrC2hVYDxBVT9xVNqNHiElM5n_Ch97OuP5ltAa9moQlogSw7MMPf6pDS-i0csmsHltAxW0ENWKRd9GCM3kbYwV-kFjvvyexpkz8oXA0iYMytrj4gRdPTh9x7sSNPH1lhXPhwlGj"/>
+<div class="absolute inset-0 bg-emerald-900/10 pointer-events-none"></div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-xl font-mono font-bold text-[var(--emerald-matrix)] group-hover:matrix-glow-text transition-all uppercase">Dart Coding</h4>
+<span class="font-mono text-[9px] text-emerald-500/50 border border-emerald-900/50 px-2 py-0.5">[DATE::2024.Q4]</span>
+</div>
+<p class="text-emerald-100/40 text-[13px] leading-relaxed mb-8 flex-grow">
+                    Testing rapid coding skills in this unique challenge where your speed determines your survival. Precision-based logic deployment.
+                </p>
+<button class="w-full bg-[var(--emerald-matrix)] text-black py-3.5 font-mono text-[10px] font-bold tracking-[0.2em] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all uppercase flex items-center justify-center gap-2">
+                    ACCESS_LOG_0x02
+                    <span class="material-symbols-outlined text-sm">login</span>
+</button>
+</div>
+<div class="bento-card p-6 flex flex-col group">
+<div class="glitch-overlay mb-6 border border-emerald-900/30 overflow-hidden aspect-[16/10]">
+<img alt="Code Tales" class="w-full h-full object-cover opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIOoLpKPXY6h_iMcmcAF2qVbxpfZq-sXm6GY6wRLMySbc1eWXHR-mP-1s7h3Ksu0B0YoDDyM7fluAgldAyixqqPkkWIxaXiIRE2AiAigoNSWX1USui22NCU8MF0UM60K_poaw82SpUlOJvfYbG83L8NG54qXj1aEk8iLd2CBIe63uNXs349g159NLXB0rnfmYeh8GsP_zPjohHU-TAAm4iasVBKlGp2EnjAi9I55gAu0y_Ty8zvxzF53FQCMXUfDuFoj4EEqCObA7x"/>
+<div class="absolute inset-0 bg-emerald-900/10 pointer-events-none"></div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-xl font-mono font-bold text-[var(--emerald-matrix)] group-hover:matrix-glow-text transition-all uppercase">Code Tales</h4>
+<span class="font-mono text-[9px] text-emerald-500/50 border border-emerald-900/50 px-2 py-0.5">[DATE::2024.Q4]</span>
+</div>
+<p class="text-emerald-100/40 text-[13px] leading-relaxed mb-8 flex-grow">
+                    Where coding meets storytelling. Creating interactive adventures through programming. Creative minds aligning via script.
+                </p>
+<button class="w-full bg-[var(--emerald-matrix)] text-black py-3.5 font-mono text-[10px] font-bold tracking-[0.2em] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all uppercase flex items-center justify-center gap-2">
+                    ACCESS_LOG_0x03
+                    <span class="material-symbols-outlined text-sm">login</span>
+</button>
+</div>
+<div class="bento-card p-6 flex flex-col group">
+<div class="glitch-overlay mb-6 border border-emerald-900/30 overflow-hidden aspect-[16/10]">
+<img alt="Gotham Code Crusade" class="w-full h-full object-cover opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8DXxxgxmvuz02S-ckIUkFbggSSm36cEQhlIxkAYAVqa3KQ3wLoJoUFbFfwbtzM6PgEJ2nc5tD9MT0_QA9RJf76lbtVzmRpEQ0R-tPcx3duaGyjK8Rtl84z9CnZ-46fa6Ms9wY4TMuYbbkatAAkol8oNmq1EVGYNzFKulRILgM8z1Z3r7qDBSToZt2LusADgfAhXWl7fxLBcymzxVg9S5uBMAmyxBDswpdn4HZIHhqyXTsbmR-2smO_XMiz39N_c5Xa2zy1JPvao8i"/>
+<div class="absolute inset-0 bg-emerald-900/10 pointer-events-none"></div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-xl font-mono font-bold text-[var(--emerald-matrix)] group-hover:matrix-glow-text transition-all uppercase">Gotham Code</h4>
+<span class="font-mono text-[9px] text-emerald-500/50 border border-emerald-900/50 px-2 py-0.5">[DATE::2024.Q4]</span>
+</div>
+<p class="text-emerald-100/40 text-[13px] leading-relaxed mb-8 flex-grow">
+                    An immersive, competitive escape room where teams solve coding and logic puzzles to save the system from chaos.
+                </p>
+<button class="w-full bg-[var(--emerald-matrix)] text-black py-3.5 font-mono text-[10px] font-bold tracking-[0.2em] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all uppercase flex items-center justify-center gap-2">
+                    ACCESS_LOG_0x04
+                    <span class="material-symbols-outlined text-sm">login</span>
+</button>
+</div>
+<div class="bento-card p-6 flex flex-col group">
+<div class="glitch-overlay mb-6 border border-emerald-900/30 overflow-hidden aspect-[16/10]">
+<img alt="Secret Event" class="w-full h-full object-cover opacity-70 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0hQxDNMNp0lvRFRK4OV6FunTgXyjw8CnLGX8EobtFsitawiaH3KWKEuhODVFGaG-GRasMM5shV4W7pnqhcFRgCRCDmrPARgSkkkUezNr2SMvnq27SbcGtHT7C0ODDZHYOWnxfwLgk6Lu8O_SzfQSI4R_ygjih4txqBuXjukVYQhY0O-e5M-TAk-LmZrxN0Z1NPLEu1UY6nBmcWDnYsWNzaOPr9Nh6KxA99nj3_PE4QF3rPSjQ1BxzZFx0rBTKX2TovEdCHbIPWNA1"/>
+<div class="absolute inset-0 bg-emerald-900/10 pointer-events-none"></div>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h4 class="text-xl font-mono font-bold text-[var(--emerald-matrix)] group-hover:matrix-glow-text transition-all uppercase">Secret Event</h4>
+<span class="font-mono text-[9px] text-emerald-500/50 border border-emerald-900/50 px-2 py-0.5">[DATE::UNIDENTIFIED]</span>
+</div>
+<p class="text-emerald-100/40 text-[13px] leading-relaxed mb-8 flex-grow">
+                    ABANDON ALL HOPE YE WHO ENTER HERE. A deep-dive into legacy systems and undocumented protocols. Proceed with caution.
+                </p>
+<button class="w-full bg-[var(--emerald-matrix)] text-black py-3.5 font-mono text-[10px] font-bold tracking-[0.2em] hover:shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all uppercase flex items-center justify-center gap-2">
+                    ACCESS_LOG_0x05
+                    <span class="material-symbols-outlined text-sm">login</span>
+</button>
+</div>
+<div class="bento-card p-6 flex flex-col border-dashed border-emerald-900/50 bg-emerald-950/5 relative overflow-hidden group">
+<div class="absolute inset-0 opacity-20 scan-line"></div>
+<div class="flex flex-col items-center justify-center h-full text-center p-8 opacity-40 group-hover:opacity-60 transition-opacity">
+<span class="material-symbols-outlined text-4xl text-emerald-500 mb-4 animate-pulse">downloading</span>
+<h4 class="text-sm font-mono text-emerald-500 mb-2 uppercase tracking-widest">Scanning_Next_Block...</h4>
+<p class="text-[9px] font-mono text-emerald-500/50">AWAITING SYSTEM UPDATE FOR Q1_2025 DATASETS</p>
+</div>
+</div>
+</div>
+<div class="mt-20 flex justify-center">
+<div class="bg-black/80 border border-emerald-900/50 px-8 py-4 flex items-center gap-12 font-mono text-[10px] text-emerald-500/40">
+<div class="flex flex-col">
+<span class="text-emerald-500/60 uppercase">System_Load</span>
+<span class="text-emerald-400">14.2%</span>
+</div>
+<div class="flex flex-col">
+<span class="text-emerald-500/60 uppercase">Buffer_Cache</span>
+<span class="text-emerald-400">256MB/sec</span>
+</div>
+<div class="flex flex-col">
+<span class="text-emerald-500/60 uppercase">Network_Latency</span>
+<span class="text-emerald-400">0.02ms</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="py-20 bg-[#020202] border-t border-emerald-900/30">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+<div class="col-span-1 md:col-span-2">
+<div class="text-[var(--emerald-matrix)] font-bold text-2xl tracking-tighter font-mono mb-8">O[1]</div>
+<p class="text-emerald-100/20 text-xs font-mono max-w-sm leading-loose uppercase tracking-widest">
+                    A subsidiary of the future. Optimized for maximum creative complexity. Operating in the shadows, building for the light.
+                </p>
+</div>
+<div>
+<h6 class="font-mono text-[10px] uppercase tracking-[0.4em] mb-8 text-emerald-500/40">__Navigation</h6>
+<ul class="space-y-4 text-xs font-mono text-emerald-100/40">
+<li><a class="hover:text-[var(--emerald-matrix)] transition-colors" href="#">/HOME</a></li>
+<li><a class="hover:text-[var(--emerald-matrix)] transition-colors" href="#">/DATA_ABOUT</a></li>
+<li><a class="hover:text-[var(--emerald-matrix)] transition-colors text-[var(--emerald-matrix)]" href="#">/EXECUTION_LOGS</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-mono text-[10px] uppercase tracking-[0.4em] mb-8 text-emerald-500/40">__Network_Nodes</h6>
+<ul class="space-y-4 text-xs font-mono text-emerald-100/40">
+<li><a class="hover:text-[var(--emerald-matrix)] transition-colors" href="#">@X_TERMINAL</a></li>
+<li><a class="hover:text-[var(--emerald-matrix)] transition-colors" href="#">@GIT_REPO</a></li>
+<li><a class="hover:text-[var(--emerald-matrix)] transition-colors" href="#">@LINKED_ID</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-10 border-t border-emerald-900/20 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="text-[10px] font-mono text-emerald-900 uppercase tracking-widest">
+                © 2026 THE_BIG_O_PROTOCOL. ALL_INTELLECTUAL_ASSETS_RESERVED.
+            </div>
+<div class="flex items-center space-x-10">
+<div class="flex items-center space-x-3">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="text-[10px] font-mono text-emerald-500/60 uppercase tracking-widest">Sys_Status: OPTIMAL</span>
+</div>
+<div class="text-[10px] font-mono text-emerald-500/60 uppercase tracking-widest flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">timer</span>
+<span id="system-clock">00:00:00 UTC</span>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    function updateClock() {
+        const now = new Date();
+        const timeStr = now.toISOString().split('T')[1].split('.')[0] + ' UTC';
+        const clockElement = document.getElementById('system-clock');
+        if (clockElement) clockElement.textContent = timeStr;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+
+</body></html>
