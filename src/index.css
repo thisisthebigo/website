@@ -37,7 +37,27 @@ code {
   background-size: 30px 30px;
 }
 .matrix-glow-text {
-  text-shadow: 0 0 8px var(--emerald-glow);
+  text-shadow: 0 0 12px var(--emerald-glow);
+}
+.scan-line {
+    position: relative;
+    overflow: hidden;
+}
+.scan-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--emerald-matrix);
+    opacity: 0.6;
+    box-shadow: 0 0 15px var(--emerald-matrix);
+    animation: scanning 4s linear infinite;
+}
+@keyframes scanning {
+    0% { top: 0%; }
+    100% { top: 100%; }
 }
 .bento-card {
   background: #000000;
@@ -47,10 +67,10 @@ code {
 .bento-card::before, .bento-card::after {
   content: '';
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   border-color: var(--emerald-matrix);
-  opacity: 0.8;
+  z-index: 10;
 }
 .bento-card::before {
   top: -1px;
@@ -63,6 +83,17 @@ code {
   right: -1px;
   border-bottom: 2px solid var(--emerald-matrix);
   border-right: 2px solid var(--emerald-matrix);
+}
+.glitch-overlay {
+    position: relative;
+}
+.glitch-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(16, 185, 129, 0.08) 3px);
+    pointer-events: none;
+    z-index: 5;
 }
 .wireframe-sphere {
   border: 1px solid var(--emerald-matrix);

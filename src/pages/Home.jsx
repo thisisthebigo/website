@@ -45,6 +45,7 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
                     <div className="flex items-center space-x-6">
                         <div className="flex items-center space-x-2">
+                            <img src="/logo.jpg" alt="Logo" className="w-8 h-8 rounded-full border border-emerald-500/30" />
                             <span className="text-[var(--emerald-matrix)] font-bold text-xl tracking-tighter font-mono">O[1]</span>
                         </div>
                         <div className="hidden lg:flex items-center space-x-4 border-l border-emerald-900/50 pl-6">
@@ -103,8 +104,8 @@ const Home = () => {
                             <div className="wireframe-sphere w-64 h-64 md:w-80 md:h-80 opacity-60 animate-[pulse_4s_infinite_ease-in-out]"></div>
                             <div className="absolute inset-0 border border-emerald-900/30 rounded-full scale-125 animate-[spin_60s_linear_infinite]"></div>
                             <div className="absolute inset-0 border border-emerald-900/20 rounded-full scale-[1.1] animate-[spin_40s_linear_infinite_reverse]"></div>
-                            <div className="absolute inset-20 flex items-center justify-center">
-                                <img alt="Big O Club Logo" className="w-32 h-32 object-cover opacity-90 brightness-110 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDAXu7NycI-BsFmpg5NaMwvCW3jS0GtDf_F0yiDbpbs2nY3IfG5OGFHKmtQMMJO19Aiu9NQkdmAUC-5xAJX1cS45Re3-G1tCGHXjy5V0-dQU9Y9GOQ22Ldb0cTgjTfQiIgW6YwAG4aCWlOeyWpfq8L2Z4rg6JFqp3zhvB_kGM6O-V-RW0zs-EUUIz7Cq5W8qW1vtn1spYmiRunQ2P6rLaYeWr88MWmVvfU9EI5adeY7gG1VtXFg_le1-WJ0Gc-20VJ2ayyf0kSQ4eM" />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <img alt="Big O Club Logo" className="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full opacity-90 mix-blend-screen" src="/logo.jpg" />
                             </div>
                             <div className="absolute top-0 right-0 bg-black border border-emerald-500/50 p-3 text-[9px] font-mono text-emerald-400">
                                 LATENCY: 12ms<br />LOAD: 0.12%

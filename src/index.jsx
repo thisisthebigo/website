@@ -24,7 +24,7 @@ root.render(
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="*" element={<Home />} />
-                <Route path="/past-events" element={<><PastEvents /><TechClubFooter clubName={"The Big O"} /></>} />
+                <Route path="/past-events" element={<PastEvents />} />
                 <Route path="/past-events/escape-room" element={<><EscapeRoom /><TechClubFooter clubName={"The Big O"} /></>} />
                 <Route path="/past-events/dart-coding" element={<><DartCoding /><TechClubFooter clubName={"The Big O"} /></>} />
                 <Route path="/past-events/code-tales" element={<><CodeTales /><TechClubFooter clubName={"The Big O"} /></>} />
