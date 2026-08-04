@@ -66,7 +66,7 @@ const Home = () => {
                         <a className="hover:text-[var(--emerald-matrix)] transition-colors" href="#events">_Events</a>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <a className="bg-[var(--emerald-matrix)] hover:bg-emerald-400 text-black px-4 py-1.5 text-xs font-bold font-mono tracking-tighter flex items-center gap-2" href="https://docs.google.com/forms/d/e/1FAIpQLScUE0cuZgpk60vhU4e2B76zU-sljhd-gaR0kwNN_6NKLfpcoA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">
+                        <a className="bg-[var(--emerald-matrix)] hover:bg-emerald-400 text-black px-4 py-1.5 text-xs font-bold font-mono tracking-tighter flex items-center gap-2" href="https://chat.whatsapp.com/BF1rNw5lEFBLYX7q0vNVzi" target="_blank" rel="noopener noreferrer">
                             <span>INIT_SEQUENCE</span>
                             <span className="material-symbols-outlined text-sm">terminal</span>
                         </a>
@@ -90,7 +90,7 @@ const Home = () => {
                             A high-fidelity collective of architects, engineers, and visionaries. We optimize human complexity and build the infrastructure of tomorrow through code and community.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLScUE0cuZgpk60vhU4e2B76zU-sljhd-gaR0kwNN_6NKLfpcoA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer" className="bg-[var(--emerald-matrix)] text-black px-8 py-4 font-mono font-bold text-sm hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3">
+                            <a href="https://chat.whatsapp.com/BF1rNw5lEFBLYX7q0vNVzi" target="_blank" rel="noopener noreferrer" className="bg-[var(--emerald-matrix)] text-black px-8 py-4 font-mono font-bold text-sm hover:shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all flex items-center justify-center gap-3">
                                 COMMAND_LINE
                                 <span className="material-symbols-outlined">chevron_right</span>
                             </a>
@@ -257,7 +257,7 @@ const Home = () => {
                                 <li><a className="hover:text-[var(--emerald-matrix)] transition-colors" href="https://x.com/codethebigo" target="_blank" rel="noopener noreferrer">@X_TERMINAL</a></li>
                                 <li><a className="hover:text-[var(--emerald-matrix)] transition-colors" href="https://github.com/thisisthebigo" target="_blank" rel="noopener noreferrer">@GIT_REPO</a></li>
                                 <li><a className="hover:text-[var(--emerald-matrix)] transition-colors" href="https://www.linkedin.com/groups/10014219/" target="_blank" rel="noopener noreferrer">@LINKED_ID</a></li>
-                                <li><a className="hover:text-[var(--emerald-matrix)] transition-colors" href="https://www.instagram.com/thisisthebigo/" target="_blank" rel="noopener noreferrer">@INSTA_GRAM</a></li>
+                                <li><a className="hover:text-[var(--emerald-matrix)] transition-colors" href="https://www.instagram.com/thebigo_ait" target="_blank" rel="noopener noreferrer">@INSTA_GRAM</a></li>
                             </ul>
                         </div>
                     </div>

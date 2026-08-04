@@ -46,7 +46,7 @@ const PastEvents = () => {
                         <Link className="text-[var(--emerald-matrix)]" to="/past-events">_Execution_Logs</Link>
                     </div>
                     <div className="flex items-center space-x-4">
-                        <a className="bg-[var(--emerald-matrix)] hover:bg-emerald-400 text-black px-4 py-1.5 text-xs font-bold font-mono tracking-tighter flex items-center gap-2" href="#">
+                            <a className="bg-[var(--emerald-matrix)] hover:bg-emerald-400 text-black px-4 py-1.5 text-xs font-bold font-mono tracking-tighter flex items-center gap-2" href="https://chat.whatsapp.com/BF1rNw5lEFBLYX7q0vNVzi" target="_blank" rel="noopener noreferrer">
                             <span>INIT_SEQUENCE</span>
                             <span className="material-symbols-outlined text-sm">terminal</span>
                         </a>

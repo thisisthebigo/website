@@ -111,7 +111,7 @@ const TechClubFooter = ({ clubName }) => {
                     <ul style={styles.list}>
                         <li style={styles.listItem}><a href="https://x.com/codethebigo" style={styles.link}>Twitter</a></li>
                         <li style={styles.listItem}><a href="https://www.linkedin.com/groups/10014219/" style={styles.link}>LinkedIn</a></li>
-                        <li style={styles.listItem}><a href="https://www.instagram.com/thisisthebigo/" style={styles.link}>Instagram</a></li>
+                        <li style={styles.listItem}><a href="https://www.instagram.com/thebigo_ait" style={styles.link}>Instagram</a></li>
                         <li style={styles.listItem}><a href="https://github.com/thisisthebigo" style={styles.link}>GitHub</a></li>
                     </ul>
                 </div>
