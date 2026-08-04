@@ -2,6 +2,11 @@
 
 This is a Vite-powered React app.
 
+## Live Demo
+
+Visit the live site: https://thebigo.netlify.app/
+
+
 ## Requirements
 
 - Node.js 18 or newer
